@@ -1,0 +1,8 @@
+@import "./config/reset.css";
+@import "./components/header.css";
+@import "./components/footer.css";
+@import "./main/icon.css";
+
+body{
+	background-color: #121212;
+}

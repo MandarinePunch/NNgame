@@ -1,0 +1,39 @@
+.nav-item {
+	border-top: 2px solid #121212;
+	border-bottom: 2px solid #121212;
+	margin-left: 30px;
+}
+
+.nav-item i {
+	font-size: 20px;
+}
+
+.nav-item:hover{
+	border-bottom-color: #ffe403;
+}
+
+.w-100 {
+	min-width: 1900px;
+	height: 650px;
+}
+
+.navbar-brand img {
+	width: 65px;
+	height: 65px;
+}
+
+.form-con {
+	color: white;
+	outline: none;
+	border: none;
+	border-radius: 0px;
+	border-bottom: 1px solid #414040;
+	background-color: #121212;
+	transition: border-color 0.2s ease-in-out;
+}
+
+.form-con:focus {
+	background: none;
+	outline: none;
+	border-color: #e6e6e6;
+}
