@@ -15,8 +15,8 @@
 @import "./store/store.css";
 
 /* 로그인 & 회원가입 */
-@import "./login/login.css";
-@import "./login/joinus.css";
+@import "./user/login.css";
+@import "./user/joinus.css";
 
 /* 장바구니 */
 @import "./cart/cart.css";
@@ -31,7 +31,8 @@
 /* 라이브러리 */
 @import "./library/library.css";
 
-
+/* 마이 페이지*/
+@import "./user/mypage.css";
 
 /* 전체 바디 컬러 */
 body { background-color: #121212; }
