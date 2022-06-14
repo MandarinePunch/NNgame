@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!Doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>고객지원</title>
+<title>Support</title>
 
 <!-- bootstrap css -->
 <link
@@ -36,22 +37,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<th scope="row">1</th>
-				<td>환불</td>
-				<td>재미없어요</td>
-				<td>고길동</td>
-				<td>2022-04-03</td>
-				<td>완료</td>
-			</tr>
-			<tr>
-				<th scope="row">2</th>
-				<td>기타</td>
-				<td><a href="qna_detail.jsp"> 그냥 올렸어요 </a></td>
-				<td>둘리</td>
-				<td>2022-05-20</td>
-				<td>진행중</td>
-			</tr>
+			<c:forEach var="supportBean" items="${support_list}">			
+				<tr>
+					<th scope="row">${supportBean.support_num}</th>
+					<td>${supportBean.support_type}</td>
+					<td><a href="qna_detail.jsp">${supportBean.support_title} </a></td>
+					<td>작성자 필요</td>
+					<td>${supportBean.support_date}</td>
+					<td>${supportBean.support_result}</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 
