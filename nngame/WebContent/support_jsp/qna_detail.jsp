@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!Doctype html>
 <html lang="en">
 <head>
@@ -22,59 +23,79 @@
 	<%@ include file="/tags/header.jsp"%>
 
 	<!-- main -->
-	<div class="qna_write">
+	<main class="qna_write">
 		<div>
-			<div class="qna_write-title">작성자</div>
+			<label class="qna_write-title">작성자</label>
 			<div class="qna_write-box">
 				<div class="form-floating">
 					<input type="text" class="form-control" id="floatingInput"
-						placeholder="name@example.com" style="width: 600px;" value="고길동"
+						placeholder="name@example.com" style="width: 600px;" value="작성자 필요"
 						disabled> <label for="floatingInput">name</label>
 				</div>
 			</div>
 		</div>
 		<div>
-			<div class="qna_write-title">문의</div>
+			<label class="qna_write-title">문의</label>
 			<div class="qna_write-box">
 				<div class="form-floating">
 					<input type="text" class="form-control" id="floatingInput"
-						placeholder="name@example.com" style="width: 600px;" value="환불"
+						placeholder="name@example.com" style="width: 600px;" value="${supportDTO.support_type }"
 						disabled> <label for="floatingInput">inquiry</label>
 				</div>
 			</div>
 		</div>
 		<div>
-			<div class="qna_write-title">제목</div>
+			<label class="qna_write-title">제목</label>
 			<div class="qna_write-box">
 				<div class="form-floating">
 					<input type="text" class="form-control" id="floatingInput"
-						placeholder="name@example.com" style="width: 600px;" value="재미없어요"
+						placeholder="name@example.com" style="width: 600px;" value="${supportDTO.support_title }"
 						disabled> <label for="floatingInput">title</label>
 				</div>
 			</div>
 		</div>
 		<div>
-			<div class="qna_write-title">내용</div>
+			<label class="qna_write-title">내용</label>
 			<div class="qna_write-box">
 				<div class="form-floating">
 					<textarea class="form-control" placeholder="Leave a comment here"
 						id="floatingTextarea2" style="height: 300px; width: 600px;"
-						disabled>개발이 엉망이에요</textarea>
+						disabled>${supportDTO.support_content }</textarea>
 					<label for="floatingTextarea2">Comments</label>
 				</div>
 			</div>
 		</div>
-		<div class="qna_write-box">
-			<form action="qna.jsp" method="post">
-				<button type="submit" class="btn submit-btn">목록</button>
-				<button type="button" class="btn submit-btn" onclick="location.href='qna_modify.jsp'">수정</button>
-				<button type="submit" class="btn submit-btn">삭제</button>
-			</form>
-		</div>
-	</div>
+			<div class="qna_write-box qna__btn-box">
+				<button type="button" class="btn submit-btn" onclick="location.href='/support/List'">목록</button>
+				<!-- post방식으로 바꾸자 -->
+				<form action="/support/update" method="post">
+					<button type="submit" class="btn submit-btn">수정</button>
+					<input type="hidden" name="support_num" value="${supportDTO.support_num }">				
+				</form>
+				<form action="/support/delete" method="post" class="deleteForm">
+					<button type="submit" class="btn submit-btn deleteBtn">삭제</button>
+					<input type="hidden" name="support_num" value="${supportDTO.support_num }">
+				</form>
+			</div>
+	</main>
 
 	<!-- footer -->
 	<%@ include file="/tags/footer.jsp"%>
+	
+	<!-- 구현 거의 다되면 분리시킬것 -->
+	<script>
+		const deleteForm = document.querySelector(".deleteForm");
+	
+		function deleteConfirm(event) {
+			let result = confirm("정말 삭제하시겠습니까?");
+			
+			if(!result){				
+				event.preventDefault();
+			} 
+		}
+		
+		deleteForm.addEventListener("submit", deleteConfirm);
+	</script>
 
 	<!-- bootstrap -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

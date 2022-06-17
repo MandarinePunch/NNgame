@@ -1,8 +1,8 @@
-package com.nngame.bean;
+package com.nngame.support.dao;
 
 import java.sql.Date;
 
-public class SupportBean {
+public class SupportDTO {
 	private int support_num;		// primary key
 	private String support_type;	// 환불, 기타..
 	private String support_title;	// 문의 제목

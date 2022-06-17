@@ -24,34 +24,52 @@
 
 	<!-- main -->
 	<main class="qna_board">
-	<h1 class="qna_board-title">고객지원</h1>
-	<table class="table table-dark table-sm table-hover qna_table">
-		<thead>
+		<h1 class="qna_board-title">고객지원</h1>
+			
+		<table class="qna_table">
 			<tr>
-				<th scope="col">No.</th>
-				<th scope="col">문의 형태</th>
-				<th scope="col">제목</th>
-				<th scope="col">작성자</th>
-				<th scope="col">문의 날짜</th>
-				<th scope="col">진행 상황</th>
+				<td align="right">문의 개수 : ${requestScope.supportCount }</td>
 			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="supportBean" items="${support_list}">			
+		</table>
+		<table class="table table-dark table-sm table-hover qna_table">
+			<c:set var="supportList" value="${requestScope.supportList }" />
+			<c:set var="count" value="${requestScope.supportCount + 1 }" />
+			<thead>
 				<tr>
-					<th scope="row">${supportBean.support_num}</th>
-					<td>${supportBean.support_type}</td>
-					<td><a href="qna_detail.jsp">${supportBean.support_title} </a></td>
-					<td>작성자 필요</td>
-					<td>${supportBean.support_date}</td>
-					<td>${supportBean.support_result}</td>
+					<th scope="col">No.</th>
+					<th scope="col">문의 형태</th>
+					<th scope="col">제목</th>
+					<th scope="col">작성자</th>
+					<th scope="col">문의 날짜</th>
+					<th scope="col">진행 상황</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-
-	<button type="submit" class="btn submit-btn"
-		onclick="location.href='qna_write.jsp'">글쓰기</button>
+			</thead>
+			<tbody>
+				<!-- req 변수 선언 -->
+				<c:choose>
+					<c:when test="${empty supportList}">
+						<tr>
+							<td colspan="6">글이 없어요.</td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<c:set var="i" value="0" />
+						<c:forEach var="supportDTO" items="${supportList}">			
+							<tr>
+								<th scope="row">${count = count - 1}</th>
+								<td>${supportDTO.support_type}</td>
+								<td><a href="/support/detail?support_num=${supportDTO.support_num }">${supportDTO.support_title} </a></td>
+								<td>작성자 필요</td>
+								<td>${supportDTO.support_date}</td>
+								<td>${supportDTO.support_result}</td>
+							</tr>
+						</c:forEach>		
+					</c:otherwise>
+				</c:choose>
+			</tbody>
+		</table>
+	
+		<button class="btn submit-btn" onclick="location.href='/support_jsp/qna_write.jsp'">글쓰기</button>
 	</main>
 
 	<!-- footer -->

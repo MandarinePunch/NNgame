@@ -5,10 +5,10 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	color: white;
 }
 
 .qna_board-title{
-	color:white;
 	text-align: center;
 	margin-bottom: 50px;
 }
@@ -31,16 +31,31 @@
 	width: 600px;
 }
 
-.qna_write-box {
-	margin-bottom: 20px;
-}
-
-.qna_write-title {
+.qna_write-title{
 	color: white;
 	margin-bottom: 5px;
 }
 
-/* qna 페이지 넘버 버튼 css */
+.qna_write-box {
+	margin-bottom: 20px;
+}
+
+.qna_write-comment {
+	color: white;
+	margin-bottom: 5px;
+}
+
+/* form으로 감싸진 버튼들 정렬을 위해 */
+.qna__btn-box{
+	display: flex;
+}
+
+/* qna 버튼 모음 박스 (목록, 확인...)*/
+.qna__btn-box form{
+	margin-left: 5px;
+}
+
+/* qna 페이지 넘버 버튼 css (현재없음) */
 .qna_page-num-btn-group{
 	margin-bottom: 20px;
 }

@@ -6,7 +6,7 @@
 	<!-- typealias 자주쓰는거 보기 편하게 이름 바꾸기 -->
 	<typeAliases>
 		<!-- 바꿔줄 명칭이 더 있다면 여기에 추가해 주세요. -->
-		<typeAlias type="com.nngame.bean.SupportBean" alias="SupportBean"/>
+		<typeAlias type="com.nngame.support.dao.SupportDTO" alias="SupportDTO"/>
 	</typeAliases>
 
 	<environments default="development">
