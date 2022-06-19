@@ -1,6 +1,8 @@
 <!doctype html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html lang="en">
 <head>
 <!-- Required meta tags -->
@@ -27,17 +29,17 @@
 	<div class="container login">
 		<!-- Login Form -->
 		<div class="row">
-			<form action="/in" name="loginform" onsubmit="return checkLogin()">
+			<form action="/userLoginOk.io" name="loginform" onsubmit="return checkLogin()">
 				<div class="mb-3">
 					<label for="InputEmail" class="form-label">이메일</label> <input
 						type="email" class="form-control" id="login_InputEmail"
-						aria-describedby="emailHelp" onblur="login_focusOut()">
+						aria-describedby="emailHelp" onblur="login_focusOut()" name="userid">
 					<p id="login_pid" class="login_pred"></p>
 				</div>
 				<div class="mb-3">
 					<label for="InputPassword" class="form-label">비밀번호</label> <input
 						type="password" class="form-control" id="login_InputPassword"
-						onblur="login_focusOut()">
+						onblur="login_focusOut()" name="userpw">
 					<p id="login_ppw" class="login_pred"></p>
 				</div>
 				<input type="submit" class="btn submit-btn" style="width: 100%;"

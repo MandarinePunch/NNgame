@@ -26,17 +26,17 @@
 	<div class="container join">
 		<!-- 회원가입 Form -->
 		<div class="row">
-			<form action="/tojoin" name="joinform" onsubmit="return checkJoin()">
+			<form action="/UserJoin.io" name="joinform" method="post" onsubmit="return checkJoin()">
 				<div class="mb-3">
 					<label for="JoinEmail1" class="form-label">이메일</label> <input
 						type="email" class="form-control" id="join_Email"
-						aria-describedby="emailHelp" onblur="join_focusOut()">
+						aria-describedby="emailHelp" onblur="join_focusOut()" name="userid">
 					<p id="join_pid" class="join_pred"></p>
 				</div>
 				<div class="mb-3">
 					<label for="JoinPassword1" class="form-label">비밀번호</label> <input
 						type="password" class="form-control" id="join_Password1"
-						onblur="join_focusOut()">
+						onblur="join_focusOut()" name="userpw">
 					<p id="join_ppw" class="join_pred"></p>
 				</div>
 				<div class="mb-3">
@@ -46,19 +46,19 @@
 				<div class="mb-3">
 					<label for="JoinNickname" class="form-label">닉네임</label> <input
 						type="text" class="form-control" id="join_Nickname"
-						onblur="join_focusOut()">
+						onblur="join_focusOut()" name="usernickname">
 					<p id="join_pnickname" class="join_pred"></p>
 				</div>
 				<div class="mb-3">
 					<label for="JoinPhoneNum" class="form-label">전화번호</label> <input
 						type="tel" class="form-control" id="join_PhoneNum"
-						onblur="join_focusOut()">
+						onblur="join_focusOut()" name="userphone">
 					<p id="join_pphnum" class="join_pred"></p>
 				</div>
 				<div class="mb-3">
 					<label for="JoinBirth" class="form-label">생년월일</label> <input
 						type="date" class="form-control" id="join_Birth"
-						onblur="join_focusOut()">
+						onblur="join_focusOut()" name="userbirth">
 					<p id="join_pbirth" class="join_pred"></p>
 				</div>
 				<p class="join__agree-msg">가입 시 이용약관, 개인정보 취급방침에 동의합니다.</p>

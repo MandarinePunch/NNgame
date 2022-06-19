@@ -10,8 +10,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-@WebFilter("/support/*")
-public class SupportCharacterEncodingFilter implements Filter {
+@WebFilter("*.io")
+public class CharacterEncodingFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2) throws IOException, ServletException {
