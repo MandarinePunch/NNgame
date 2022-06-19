@@ -12,4 +12,9 @@
 	<select id = "login" parameterType="hashmap" resultType="_int">
 		SELECT COUNT(*) FROM USERINFO WHERE USER_EMAIL = #{userid} and USER_PWD = #{userpw}
 	</select>
+	
+	<!-- UserData 조회 -->
+	<select id="getUserDTO" parameterType="string" resultType="UserDTO">
+        SELECT * FROM USERINFO WHERE USER_EMAIL = #{userid}
+	</select>
 </mapper>

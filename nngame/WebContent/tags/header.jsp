@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,12 +37,31 @@
 							<i class="fa-solid fa-magnifying-glass"></i>
 						</button>
 					</form>
+
 					<ul class="navbar-nav">
-						<li class="nav-item header__nav-item"><a class="nav-link active"
-							aria-current="page" href="/cart.jsp"> <i
-								class="fa-solid fa-cart-shopping"></i></a></li>
-						<li class="nav-item header__nav-item"><a class="nav-link active"
-							aria-current="page" href="/login/login.jsp"><i class="fa-solid fa-user"></i></a></li>
+						<li class="nav-item header__nav-item"><a
+							class="nav-link active" aria-current="page" href="/cart.jsp">
+								<i class="fa-solid fa-cart-shopping"></i>
+						</a></li>
+
+						<c:choose>
+							<c:when test="${empty sessionScope.udto.getUser_email()}">
+								<li class="nav-item header__nav-item"><a
+									class="nav-link active" aria-current="page"
+									href="/login/login.jsp"> Login </a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="nav-item header__nav-item"><a
+									class="nav-link active" aria-current="page"
+									href="/myPage.jsp"> <i class="fa-solid fa-user"></i>
+								</a></li>
+								<li class="nav-item header__nav-item"><a
+									class="nav-link active" aria-current="page"
+									href="/login/logout.jsp"> <i
+										class="fa-solid fa-arrow-right-from-bracket"></i>
+								</a></li>
+							</c:otherwise>
+						</c:choose>
 					</ul>
 				</div>
 			</div>

@@ -1,5 +1,7 @@
 package com.nngame.user;
 
+import java.sql.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,12 +19,11 @@ public class UserJoinAction implements Action{
 		ActionForward forward = new ActionForward();
 		
 		//시퀀스, #{userid}, #{userpw}, #{usernickname}, #{userphone}, #{userbirth}, SYSDATE 
-		user.setUserid(request.getParameter("userid"));
-		user.setUserpw(request.getParameter("userpw"));
-		user.setUsernickname(request.getParameter("usernickname"));
-		user.setUserphone(request.getParameter("userphone"));
-		user.setUserbirth(request.getParameter("userbirth"));
-		
+		user.setUser_email(request.getParameter("userid"));
+		user.setUser_pwd(request.getParameter("userpw"));
+		user.setUser_email(request.getParameter("usernickname"));
+		user.setUser_phone(request.getParameter("userphone"));
+		user.setUser_birth(request.getParameter("userbirth"));
 		
 		if(udao.join(user)) {		// 회원가입 성공
 			forward.setRedirect(true);

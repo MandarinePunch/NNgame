@@ -40,4 +40,9 @@ public class UserDAO {
 		
 		return result;
 	}
+	
+	public UserDTO getUserData(String userid) {
+		UserDTO userdata = sqlsession.selectOne("Users.getUserDTO", userid);
+		return userdata;
+	}
 }
