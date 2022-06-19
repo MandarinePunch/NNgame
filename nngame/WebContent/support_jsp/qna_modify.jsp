@@ -24,23 +24,25 @@
 
 	<!-- main -->
 	<main>
-		<form action="/support/updateSuccess" method="post" class="checkForm">
-			<div class="qna_write">
+		<form action="/support/updateSuccess.io" method="post" class="checkForm">
+			<div class="qna__write">
+			<%-- 
 				<div>
-					<div class="qna_write-title">작성자</div>
-					<div class="qna_write-box">
+					<div class="qna__write-title">작성자</div>
+					<div class="qna__write-box">
 						<div class="form-floating">
 							<!-- support_writer 필요함 -->
 							<input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
-							name="support_writer" style="width: 600px;" value="작성자 필요" disabled>
+							name="support_writer" style="width: 600px;" value="${supportDTO.support_writer }" disabled>
 							<label for="floatingInput">name</label>
 						</div>
 					</div>
 				</div>
+			--%>
 				<div>
-					<div class="qna_write-title">문의</div>
-					<div class="qna_write-box">
-						<select class="form-select qna_form-select checkSelect" aria-label="Default select example" name="support_type">
+					<div class="qna__write-title">문의</div>
+					<div class="qna__write-box">
+						<select class="form-select qna__form-select checkSelect" aria-label="Default select example" name="support_type">
 							<option selected value="0">---문의 내용을 선택해주세요---</option>
 							<option value="환불">환불</option>
 							<option value="기타">기타</option>
@@ -48,26 +50,28 @@
 					</div>
 				</div>
 				<div>
-					<div class="qna_write-title">제목</div>
-					<div class="qna_write-box">
+					<div class="qna__write-title">제목</div>
+					<div class="qna__write-box">
 						<div class="form-floating">
 							<input type="text" class="form-control checkTitle" id="floatingInput"
-								placeholder="name@example.com" style="width: 600px;" value="${supportDTO.support_title }" name="support_title">
+								placeholder="name@example.com" style="width: 600px;" value="${supportDTO.support_title }" name="support_title" maxlength="15">
 							<label for="floatingInput">title</label>
 						</div>
 					</div>
 				</div>
 				<div>
-					<div class="qna_write-title">내용</div>
-					<div class="qna_write-box">
+					<div class="qna__write-title">내용</div>
+					<div class="qna__write-box">
 						<div class="form-floating">
 							<textarea class="form-control checkComments" placeholder="Leave a comment here"
-								id="floatingTextarea2" style="height: 300px; width: 600px;" name="support_content">${supportDTO.support_content }</textarea>
+								id="floatingTextarea2" style="height: 300px; width: 600px;" name="support_content"
+								maxlength="300">${supportDTO.support_content }</textarea>
 							<label for="floatingTextarea2">Comments</label>
+							<span class="qna__comment-count commentsLength"></span>
 						</div>
 					</div>
 				</div>
-				<div class="qna_write-box">
+				<div class="qna__write-box">
 					<button type="submit" class="btn submit-btn">수정하기</button>
 					<input type="hidden" name="support_num" value="${supportDTO.support_num }">
 				</div>

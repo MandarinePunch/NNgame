@@ -23,20 +23,24 @@
 	<%@ include file="/tags/header.jsp"%>
 
 	<!-- main -->
-	<main class="qna_write">
+	<main class="qna__write">
+	<%-- 
+		<!-- 작성자 -->
 		<div>
-			<label class="qna_write-title">작성자</label>
-			<div class="qna_write-box">
+			<label class="qna__write-title">작성자</label>
+			<div class="qna__write-box">
 				<div class="form-floating">
 					<input type="text" class="form-control" id="floatingInput"
-						placeholder="name@example.com" style="width: 600px;" value="작성자 필요"
+						placeholder="name@example.com" style="width: 600px;" value="${supportDTO.support_writer }"
 						disabled> <label for="floatingInput">name</label>
 				</div>
 			</div>
 		</div>
+	--%>
+		<!-- 문의 유형 -->
 		<div>
-			<label class="qna_write-title">문의</label>
-			<div class="qna_write-box">
+			<label class="qna__write-title">문의</label>
+			<div class="qna__write-box">
 				<div class="form-floating">
 					<input type="text" class="form-control" id="floatingInput"
 						placeholder="name@example.com" style="width: 600px;" value="${supportDTO.support_type }"
@@ -44,9 +48,11 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- 글 제목 -->
 		<div>
-			<label class="qna_write-title">제목</label>
-			<div class="qna_write-box">
+			<label class="qna__write-title">제목</label>
+			<div class="qna__write-box">
 				<div class="form-floating">
 					<input type="text" class="form-control" id="floatingInput"
 						placeholder="name@example.com" style="width: 600px;" value="${supportDTO.support_title }"
@@ -54,9 +60,11 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- 글 내용 -->
 		<div>
-			<label class="qna_write-title">내용</label>
-			<div class="qna_write-box">
+			<label class="qna__write-title">내용</label>
+			<div class="qna__write-box">
 				<div class="form-floating">
 					<textarea class="form-control" placeholder="Leave a comment here"
 						id="floatingTextarea2" style="height: 300px; width: 600px;"
@@ -65,18 +73,40 @@
 				</div>
 			</div>
 		</div>
-			<div class="qna_write-box qna__btn-box">
-				<button type="button" class="btn submit-btn" onclick="location.href='/support/List'">목록</button>
-				<!-- post방식으로 바꾸자 -->
-				<form action="/support/update" method="post">
-					<button type="submit" class="btn submit-btn">수정</button>
-					<input type="hidden" name="support_num" value="${supportDTO.support_num }">				
-				</form>
-				<form action="/support/delete" method="post" class="deleteForm">
-					<button type="submit" class="btn submit-btn deleteBtn">삭제</button>
-					<input type="hidden" name="support_num" value="${supportDTO.support_num }">
+		
+		<!-- 관리자 계정 만들시, 진행중, 완료 업데이트..
+			<div class="qna__progress">
+				<form action="/support/progress" method="post" class="checkProgress">
+					<table class="qna__progress-table">
+						<tr valign="middle">
+							<td align="left" style="padding-left: 10px">
+								<label class="qna__progress-text"><input type="radio" name="support_result" value="진행중" checked>&nbsp;진행중</label>
+								<label class="qna__progress-text"><input type="radio" name="support_result" value="완료" >&nbsp;완료</label>
+							</td>
+							<td align="right">
+								<button type="submit" class="btn" style="color:#ffe403">확인</button>
+								<input type="hidden" name="support_num" value="${supportDTO.support_num }">
+							</td>
+						</tr>
+					</table>	
 				</form>
 			</div>
+		 -->
+		
+		<!-- 목록, 수정, 삭제 버튼 -->
+		<div class="qna__write-box qna__btn-box">
+			<button type="button" class="btn submit-btn" onclick="location.href='/support/List'">목록</button>
+			
+			<!-- select 글 유저번호 = 로그인된 유저번호 해서 null이 아니면 보여주게 해보자 -->
+			<form action="/support/update" method="post">
+				<button type="submit" class="btn submit-btn">수정</button>
+				<input type="hidden" name="support_num" value="${supportDTO.support_num }">				
+			</form>
+			<form action="/support/delete" method="post" class="deleteForm">
+				<button type="submit" class="btn submit-btn deleteBtn">삭제</button>
+				<input type="hidden" name="support_num" value="${supportDTO.support_num }">
+			</form>
+		</div>
 	</main>
 
 	<!-- footer -->

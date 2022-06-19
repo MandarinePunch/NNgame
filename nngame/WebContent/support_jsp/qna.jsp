@@ -23,45 +23,48 @@
 	<%@ include file="/tags/header.jsp"%>
 
 	<!-- main -->
-	<main class="qna_board">
-		<h1 class="qna_board-title">고객지원</h1>
-			
-		<table class="qna_table">
+	<c:set var="totalCount" value="${requestScope.totalCount }" />
+	<c:set var="startPage" value="${requestScope.startPage }" />
+	<c:set var="endPage" value="${requestScope.endPage }" />
+	<c:set var="totalPage" value="${requestScope.totalPage }" />
+	<c:set var="currentPage" value="${requestScope.currentPage }" />
+	<c:set var="supportList" value="${requestScope.supportList }" />
+	<main class="qna__board">
+		<h1 class="qna__board-title">고객지원</h1>
+		<table class="qna__table">
 			<tr>
-				<td align="right">문의 개수 : ${requestScope.supportCount }</td>
+				<td align="right">문의 개수 : ${totalCount }</td>
 			</tr>
 		</table>
-		<table class="table table-dark table-sm table-hover qna_table">
-			<c:set var="supportList" value="${requestScope.supportList }" />
-			<c:set var="count" value="${requestScope.supportCount + 1 }" />
+		<table class="table table-dark table-sm table-hover qna__table">
 			<thead>
 				<tr>
-					<th scope="col">No.</th>
-					<th scope="col">문의 형태</th>
-					<th scope="col">제목</th>
-					<th scope="col">작성자</th>
-					<th scope="col">문의 날짜</th>
-					<th scope="col">진행 상황</th>
+					<th scope="col" width="5%">No.</th>
+					<th scope="col" width="12%">문의 형태</th>
+					<th scope="col" width="40%">제목</th>
+					<th scope="col" width="13%">작성자</th>
+					<th scope="col" width="10%">문의 날짜</th>
+					<th scope="col" width="10%">진행 상황</th>
 				</tr>
 			</thead>
 			<tbody>
 				<!-- req 변수 선언 -->
 				<c:choose>
 					<c:when test="${empty supportList}">
-						<tr>
+						<tr height="40px">
 							<td colspan="6">글이 없어요.</td>
 						</tr>
 					</c:when>
 					<c:otherwise>
 						<c:set var="i" value="0" />
-						<c:forEach var="supportDTO" items="${supportList}">			
+						<c:forEach var="supportDTO" items="${supportList}" varStatus="status">			
 							<tr>
-								<th scope="row">${count = count - 1}</th>
+								<th scope="row">${totalCount - (currentPage - 1) * 10 - status.index}</th>
 								<td>${supportDTO.support_type}</td>
-								<td><a href="/support/detail?support_num=${supportDTO.support_num }">${supportDTO.support_title} </a></td>
-								<td>작성자 필요</td>
+								<td class="qna__List-title"><a href="/support/detail?support_num=${supportDTO.support_num }">${supportDTO.support_title} </a></td>
+								<td>${supportDTO.support_writer }</td>
 								<td>${supportDTO.support_date}</td>
-								<td>${supportDTO.support_result}</td>
+								<td class="qna__List-progress">${supportDTO.support_result}</td>
 							</tr>
 						</c:forEach>		
 					</c:otherwise>
@@ -69,11 +72,53 @@
 			</tbody>
 		</table>
 	
-		<button class="btn submit-btn" onclick="location.href='/support_jsp/qna_write.jsp'">글쓰기</button>
+		<table class="qna__table">
+			<tr>
+				<td align="right">
+					<button class="btn submit-btn" onclick="location.href='/support_jsp/qna_write.jsp'">글쓰기</button>
+				</td>
+			</tr>
+		</table>
+		
+		<!-- 페이징 처리 -->
+		<table class="qna__table">
+			<tr>
+				<td class="qna__paging">
+					<c:if test="${currentPage > 5 }">
+						<a class="qna__paging-move" href="?page=${currentPage - 5 }"><i class="fa-solid fa-angle-left"></i></a>
+					</c:if>
+					<c:forEach var="i" begin="${startPage }" end="${endPage }">
+						<c:choose>
+							<c:when test="${i == currentPage }">
+								<div class="qna__paging-selected">
+									${i }
+								</div>
+							</c:when>
+							<c:otherwise>
+								<a class="qna__paging-num" href="?page=${i }">${i }</a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:if test="${endPage < totalPage }">
+						<c:choose>
+							<c:when test="${currentPage + 5 > totalPage }">
+								<a class="qna__paging-move" href="?page=${totalPage }"><i class="fa-solid fa-angle-right"></i></a>
+							</c:when>
+							<c:otherwise>
+								<a class="qna__paging-move" href="?page=${currentPage + 5 }"><i class="fa-solid fa-angle-right"></i></a>
+							</c:otherwise>
+						</c:choose>
+					</c:if>
+				</td>			
+			</tr>
+		</table>
 	</main>
 
 	<!-- footer -->
 	<%@ include file="/tags/footer.jsp"%>
+
+	<!-- fontawesome -->
+	<script src="https://kit.fontawesome.com/516437ec88.js" crossorigin="anonymous"></script>
 
 	<!-- bootstrap -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

@@ -5,8 +5,12 @@
 <mapper namespace="Support">
 
 	<!-- qna board의 모든 list불러옴 -->
-	<select id="getSupportList" resultType="SupportDTO">
-		SELECT * FROM SUPPORT ORDER BY SUPPORT_NUM DESC
+	<select id="getBoardList" parameterType="hashmap" resultType="SupportDTO">
+		SELECT *
+		FROM (	SELECT rownum R, D.*
+				FROM (SELECT * FROM SUPPORT s ORDER BY SUPPORT_NUM DESC) D
+				) B
+		WHERE B.R BETWEEN #{startRow} AND #{endRow}
 	</select>
 	
 	<!-- qna board의 모든 list의 개수를 불러옴 -->
@@ -31,7 +35,7 @@
 	<!-- 글 삽입(실제 user_num 필요) -->
 	<insert id="insertBoard" parameterType="SupportDTO">
 		INSERT INTO SUPPORT
-		VALUES (#{support_num}, #{support_type}, #{support_title}, #{support_content}, #{support_date}, #{support_result}, #{user_num})
+		VALUES (#{support_num}, #{support_type}, #{support_title}, #{support_content}, #{support_date}, #{support_result}, #{user_num}, #{support_writer})
 	</insert>
 	
 	<!-- 글 삭제 -->

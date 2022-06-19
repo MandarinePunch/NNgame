@@ -10,6 +10,7 @@ public class SupportDTO {
 	private Date support_date;		// 문의 등록 날짜
 	private String support_result;	// 완료, 진행중...
 	private int user_num;			// 누가 문의를 했는지 가져오기 위해
+	private String support_writer;
 	
 	public int getSupport_num() {
 		return support_num;
@@ -52,5 +53,11 @@ public class SupportDTO {
 	}
 	public void setUser_num(int user_num) {
 		this.user_num = user_num;
+	}
+	public String getSupport_writer() {
+		return support_writer;
+	}
+	public void setSupport_writer(String support_writer) {
+		this.support_writer = support_writer;
 	}
 }

@@ -36,7 +36,7 @@ public class SupportFrontController extends HttpServlet {
 			forward = new SupportDeleteAction().execute(request, response);
 		} else if(requestURI.equals("/support/update")) {
 			forward = new SupportUpdateAction().execute(request, response);
-		} else if(requestURI.equals("/support/updateSuccess")){
+		} else if(requestURI.equals("/support/updateSuccess.io")){
 			forward = new SupportUpdateSuccessAction().execute(request, response);
 		}
 		

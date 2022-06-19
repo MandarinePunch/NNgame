@@ -24,13 +24,13 @@
 
 	<!-- main -->
 	<main>
-		<!-- 서블릿을 둬서 글 삽입 가능하게 할 것 -->
+		<!-- 아직 글 삽입 구현 안됨 -->
 		<form action="List" class="checkForm" method="post">
-			<div class="qna_write">
+			<div class="qna__write">
 				<div>
-					<label class="qna_write-title">문의</label>
-					<div class="qna_write-box">
-						<select class="form-select qna_form-select checkSelect"
+					<label class="qna__write-title">문의</label>
+					<div class="qna__write-box">
+						<select class="form-select qna__form-select checkSelect"
 							aria-label="Default select example" name="support_type">
 							<option value="0" selected>---문의 내용을 선택해주세요---</option>
 							<option value="1">환불</option>
@@ -39,27 +39,29 @@
 					</div>
 				</div>
 				<div>
-					<label class="qna_write-title">제목</label>
-					<div class="qna_write-box">
+					<label class="qna__write-title">제목</label>
+					<div class="qna__write-box">
 						<div class="form-floating">
 							<input type="text" class="form-control checkTitle"
 								name="support_title" id="floatingInput" placeholder="name@example.com"
-								style="width: 600px;"> <label for="floatingInput">title</label>
+								style="width: 600px;" maxlength="15">
+							<label for="floatingInput">title</label>
 						</div>
 					</div>
 				</div>
 				<div>
-					<label class="qna_write-title">내용</label>
-					<div class="qna_write-box">
+					<label class="qna__write-title">내용</label>
+					<div class="qna__write-box">
 						<div class="form-floating">
 							<textarea class="form-control checkComments"
 								placeholder="Leave a comment here" id="floatingTextarea2"
-								name="support_content" style="height: 300px; width: 600px;"></textarea>
+								name="support_content" style="height: 300px; width: 600px;" maxlength="300"></textarea>
 							<label for="floatingTextarea2">Comments</label>
+							<span class="qna__comment-count commentsLength"></span>
 						</div>
 					</div>
 				</div>
-				<div class="qna_write-box">
+				<div class="qna__write-box">
 					<button type="submit" class="btn submit-btn" value="access">작성</button>
 					<button type="button" class="btn submit-btn" value="cancel" onclick="history.back()">취소</button>
 				</div>

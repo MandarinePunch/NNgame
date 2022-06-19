@@ -1,5 +1,6 @@
 package com.nngame.support.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -17,8 +18,12 @@ public class SupportDAO {
 	}
 	
 	// support 게시판 모든 리스트 받아오기
-	public List<SupportDTO> getSupportList(){
-		List<SupportDTO> list = sqlsession.selectList("Support.getSupportList");
+	public List<SupportDTO> getBoardList(int startRow, int endRow){
+		HashMap<String, Integer> data = new HashMap<>();
+		data.put("startRow", startRow);
+		data.put("endRow", endRow);
+		
+		List<SupportDTO> list = sqlsession.selectList("Support.getBoardList", data);
 		
 		return list;
 	}
