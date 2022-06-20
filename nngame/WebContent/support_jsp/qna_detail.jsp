@@ -24,6 +24,7 @@
 
 	<!-- main -->
 	<main class="qna__write">
+		<h1 class="qna__detail-h1">문의 내용</h1>
 	<%-- 
 		<!-- 작성자 -->
 		<div>
@@ -41,10 +42,8 @@
 		<div>
 			<label class="qna__write-title">문의</label>
 			<div class="qna__write-box">
-				<div class="form-floating">
-					<input type="text" class="form-control" id="floatingInput"
-						placeholder="name@example.com" style="width: 600px;" value="${supportDTO.support_type }"
-						disabled> <label for="floatingInput">inquiry</label>
+				<div class="qna__detail-type">
+					${supportDTO.support_type }
 				</div>
 			</div>
 		</div>
@@ -53,10 +52,8 @@
 		<div>
 			<label class="qna__write-title">제목</label>
 			<div class="qna__write-box">
-				<div class="form-floating">
-					<input type="text" class="form-control" id="floatingInput"
-						placeholder="name@example.com" style="width: 600px;" value="${supportDTO.support_title }"
-						disabled> <label for="floatingInput">title</label>
+				<div class="qna__detail-title">
+					${supportDTO.support_title }
 				</div>
 			</div>
 		</div>
@@ -65,12 +62,9 @@
 		<div>
 			<label class="qna__write-title">내용</label>
 			<div class="qna__write-box">
-				<div class="form-floating">
-					<textarea class="form-control" placeholder="Leave a comment here"
-						id="floatingTextarea2" style="height: 300px; width: 600px;"
-						disabled>${supportDTO.support_content }</textarea>
-					<label for="floatingTextarea2">Comments</label>
-				</div>
+				<div class="qna__detail-content">
+					${supportDTO.support_content }
+				</div>					
 			</div>
 		</div>
 		

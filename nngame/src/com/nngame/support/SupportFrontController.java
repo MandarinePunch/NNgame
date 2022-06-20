@@ -37,14 +37,14 @@ public class SupportFrontController extends HttpServlet {
 		} else if(requestURI.equals("/support/update")) {
 			forward = new SupportUpdateAction().execute(request, response);
 		} else if(requestURI.equals("/support/updateSuccess.io")) {
-			forward = new SupportUpdateSuccessAction().execute(request, response);
+			forward = new SupportUpdateOkAction().execute(request, response);
 		} else if(requestURI.equals("/support/insert")) {
 			forward = new ActionForward();
 			
 			forward.setPath("/support_jsp/qna_write.jsp");
 			forward.setRedirect(false);
 		} else if(requestURI.equals("/support/insertSuccess.io")) {
-			forward = new SupportInsertSuccessAction().execute(request, response);
+			forward = new SupportWriteOkAction().execute(request, response);
 		}
 		
 		if(forward != null) {			

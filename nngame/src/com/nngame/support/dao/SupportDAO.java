@@ -54,6 +54,11 @@ public class SupportDAO {
 	public void updateBoard(SupportDTO sdto) {
 		sqlsession.update("Support.updateBoard", sdto);
 	}
+
+	// 글 상세 번호 가져오기
+	public int getDetailNum() {
+		return sqlsession.selectOne("Support.getDetailNum");
+	}
 }
 
 

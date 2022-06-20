@@ -41,4 +41,9 @@
 		WHERE SUPPORT_NUM = #{support_num}
 	</update>
 	
+	<!-- 글 상세 번호 가져오기 -->
+	<select id="getDetailNum" resultType="_int">
+		SELECT seq_support_no.currval FROM dual
+	</select>
+	
 </mapper>

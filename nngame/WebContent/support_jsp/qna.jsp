@@ -48,7 +48,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<!-- req 변수 선언 -->
+				<%-- req 변수 선언 --%>
 				<c:choose>
 					<c:when test="${empty supportList}">
 						<tr height="40px" valign="middle">

@@ -10,6 +10,13 @@
 
 <body>
 	<header>
+		<%--
+			user session을 udto로 전부 받아오는데 그러면 password도 유출될 가능성이 높아
+			필요한 정보만 세션에 넣어보게끔 고쳤으면 좋겠다.
+		 --%>
+		<%-- user session 변수 설정 --%>
+		<c:set var="udto" scope="session" value="${udto }" />
+		
 		<nav class="navbar navbar-expand-lg navbar-dark">
 			<div class="container-fluid">
 				<a class="navbar-brand header__nav-brand" href="/index.jsp"> 
@@ -25,8 +32,21 @@
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item header__nav-item"><a class="nav-link active"
 							aria-current="page" href="/store.jsp">스토어</a></li>
-						<li class="nav-item header__nav-item"><a class="nav-link active"
-							aria-current="page" href="/support/List">고객지원</a></li>
+						<li class="nav-item header__nav-item">
+							<c:choose>
+								<c:when test="${empty udto }">
+									<a class="nav-link active" aria-current="page" href="/warning/login">
+										고객지원
+									</a>
+								</c:when>
+								<c:otherwise>
+									<a class="nav-link active" aria-current="page" href="/support/List">
+										고객지원
+									</a>
+								</c:otherwise>
+							</c:choose>
+							
+						</li>
 						<li class="nav-item header__nav-item"><a class="nav-link active"
 							aria-current="page" href="/library.jsp">라이브러리</a></li>
 					</ul>
@@ -43,9 +63,8 @@
 							class="nav-link active" aria-current="page" href="/cart.jsp">
 								<i class="fa-solid fa-cart-shopping"></i>
 						</a></li>
-
 						<c:choose>
-							<c:when test="${empty sessionScope.udto.getUser_email()}">
+							<c:when test="${empty udto}">
 								<li class="nav-item header__nav-item"><a
 									class="nav-link active" aria-current="page"
 									href="/login/login.jsp"> Login </a></li>

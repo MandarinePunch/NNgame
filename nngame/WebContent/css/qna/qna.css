@@ -73,7 +73,7 @@
 
 /* qna_detail & qna_write & qna_modify */
 .qna__write {
-	margin-top: 100px;
+	margin-top: 60px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -93,6 +93,7 @@
 /* 각 입력 폼의 title */
 .qna__write-title{
 	color: white;
+	font-weight: bold;
 	margin-bottom: 5px;
 }
 
@@ -129,3 +130,31 @@
 	margin-left: 5px;
 }
 /* ///////////////////////////////////////// */
+/* 문의 내용(h1) */
+.qna__detail-h1{
+	color: white;
+	margin-bottom: 60px;
+}
+
+/* 글 상세 박스 공통영역 */
+.qna__detail-title,
+.qna__detail-type,
+.qna__detail-content{
+	width: 600px;
+	background-color: #202020;
+	border-radius: 5px;
+	padding: 12px;
+	color: rgba(255,255,255,0.7);
+}
+
+/* 글 상세 타입 및 타이틀 */
+.qna__detail-title,
+.qna__detail-type{
+	height: 50px;
+}
+
+/* 글 상세 내용 */
+.qna__detail-content{
+	height: 300px;
+}
+/* ////////////////////////////////////////// */

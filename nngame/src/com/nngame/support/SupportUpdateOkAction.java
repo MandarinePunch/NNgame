@@ -9,7 +9,7 @@ import com.nngame.support.dao.SupportDAO;
 import com.nngame.support.dao.SupportDTO;
 
 // 업데이트 버튼을 누르면 실행되는 컨트롤러
-public class SupportUpdateSuccessAction implements Action {
+public class SupportUpdateOkAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
