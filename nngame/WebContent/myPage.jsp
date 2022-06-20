@@ -1,6 +1,9 @@
 <!doctype html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <html lang="en">
 <head>
 <!-- Required meta tags -->
@@ -33,11 +36,11 @@
 				<form action="#" onsubmit="#">
 					<div class="mb-3">
 						<label for="mod_Email" class="form-label">이메일</label> 
-						<input type="email"	class="form-control" id="mod_Email" aria-describedby="emailHelp" value="email@email.com" disabled>
+						<input type="email"	class="form-control" id="mod_Email" aria-describedby="emailHelp" value="${sessionScope.udto.getUser_email() }" disabled>
 					</div>
 					<div class="mb-3">
 						<label for="mod_birth" class="form-label">생년월일</label>
-						<input type="text" class="form-control" id="mod_birth" value="1999-09-09" disabled>
+						<input type="text" class="form-control" id="mod_birth" value="${fn:substring(sessionScope.udto.getUser_birth() , 0, 10) }" disabled>
 					</div>
 					<div class="mb-3">
 						<label for="mod_nickname" class="form-label">닉네임</label>
