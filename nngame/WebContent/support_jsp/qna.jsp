@@ -51,7 +51,7 @@
 				<!-- req 변수 선언 -->
 				<c:choose>
 					<c:when test="${empty supportList}">
-						<tr height="40px">
+						<tr height="40px" valign="middle">
 							<td colspan="6">글이 없어요.</td>
 						</tr>
 					</c:when>
@@ -75,7 +75,7 @@
 		<table class="qna__table">
 			<tr>
 				<td align="right">
-					<button class="btn submit-btn" onclick="location.href='/support_jsp/qna_write.jsp'">글쓰기</button>
+					<button class="btn submit-btn" onclick="location.href='/support/insert'">글쓰기</button>
 				</td>
 			</tr>
 		</table>

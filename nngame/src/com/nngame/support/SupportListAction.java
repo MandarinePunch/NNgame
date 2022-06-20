@@ -1,15 +1,11 @@
 package com.nngame.support;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.nngame.action.Action;
 import com.nngame.action.ActionForward;
 import com.nngame.support.dao.SupportDAO;
-import com.nngame.support.dao.SupportDTO;
-
 
 public class SupportListAction implements Action{
 	@Override
@@ -27,6 +23,7 @@ public class SupportListAction implements Action{
 		int page = 0;
 		page = (temp == null) ? 1 : Integer.parseInt(temp);
 
+		// 한 페이지에 10개의 글을 보여줄 것, 페이지 넘버는 5의 배수로 해줌
 		int countList = 10;
 		int countPage = 5;
 		

@@ -25,7 +25,7 @@
 	<!-- main -->
 	<main>
 		<!-- 아직 글 삽입 구현 안됨 -->
-		<form action="List" class="checkForm" method="post">
+		<form action="/support/insertSuccess.io" class="checkForm" method="post">
 			<div class="qna__write">
 				<div>
 					<label class="qna__write-title">문의</label>
@@ -33,8 +33,8 @@
 						<select class="form-select qna__form-select checkSelect"
 							aria-label="Default select example" name="support_type">
 							<option value="0" selected>---문의 내용을 선택해주세요---</option>
-							<option value="1">환불</option>
-							<option value="2">기타</option>
+							<option value="환불">환불</option>
+							<option value="기타">기타</option>
 						</select>
 					</div>
 				</div>
@@ -62,8 +62,8 @@
 					</div>
 				</div>
 				<div class="qna__write-box">
-					<button type="submit" class="btn submit-btn" value="access">작성</button>
-					<button type="button" class="btn submit-btn" value="cancel" onclick="history.back()">취소</button>
+					<button type="submit" class="btn submit-btn">작성</button>
+					<button type="button" class="btn submit-btn" onclick="history.back()">취소</button>
 				</div>
 			</div>
 		</form>
