@@ -25,7 +25,7 @@
 	<!-- main -->
 	<main>
 		<!-- 아직 글 삽입 구현 안됨 -->
-		<form action="/support/insertSuccess.io" class="checkForm" method="post">
+		<form action="/support/insertOk.io" class="checkForm" method="post">
 			<div class="qna__write">
 				<div>
 					<label class="qna__write-title">문의</label>

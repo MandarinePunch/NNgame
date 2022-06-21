@@ -5,7 +5,7 @@
 <mapper namespace="Users">
 	<!-- Join -->
 	<insert id ="join" parameterType="UserDTO">
-		INSERT INTO USERINFO VALUES ( SEQ_USER_NO.nextval, #{userid}, #{userpw}, #{usernickname}, #{userphone}, #{userbirth}, SYSDATE )
+		INSERT INTO USERINFO VALUES ( SEQ_USER_NO.nextval, #{user_email}, #{user_pwd}, #{user_nickname}, #{user_phone}, #{user_birth}, SYSDATE )
 	</insert>
 	
 	<!-- Login -->

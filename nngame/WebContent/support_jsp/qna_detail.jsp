@@ -23,21 +23,11 @@
 	<%@ include file="/tags/header.jsp"%>
 
 	<!-- main -->
+	<c:set var="user" scope="session" value="${udto }" />
+	<c:set var="supportDTO" scope="request" value="${supportDTO }" />
 	<main class="qna__write">
 		<h1 class="qna__detail-h1">문의 내용</h1>
-	<%-- 
-		<!-- 작성자 -->
-		<div>
-			<label class="qna__write-title">작성자</label>
-			<div class="qna__write-box">
-				<div class="form-floating">
-					<input type="text" class="form-control" id="floatingInput"
-						placeholder="name@example.com" style="width: 600px;" value="${supportDTO.support_writer }"
-						disabled> <label for="floatingInput">name</label>
-				</div>
-			</div>
-		</div>
-	--%>
+		
 		<!-- 문의 유형 -->
 		<div>
 			<label class="qna__write-title">문의</label>
@@ -91,15 +81,17 @@
 		<div class="qna__write-box qna__btn-box">
 			<button type="button" class="btn submit-btn" onclick="location.href='/support/List'">목록</button>
 			
-			<!-- select 글 유저번호 = 로그인된 유저번호 해서 null이 아니면 보여주게 해보자 -->
-			<form action="/support/update" method="post">
-				<button type="submit" class="btn submit-btn">수정</button>
-				<input type="hidden" name="support_num" value="${supportDTO.support_num }">				
-			</form>
-			<form action="/support/delete" method="post" class="deleteForm">
-				<button type="submit" class="btn submit-btn deleteBtn">삭제</button>
-				<input type="hidden" name="support_num" value="${supportDTO.support_num }">
-			</form>
+			<%-- 현재 로그인된 유저일시에만 수정 및 삭제 가능 --%>
+			<c:if test="${supportDTO.user_num == user.user_num }">				
+				<form action="/support/update" method="post">
+					<button type="submit" class="btn submit-btn">수정</button>
+					<input type="hidden" name="support_num" value="${supportDTO.support_num }">				
+				</form>
+				<form action="/support/delete" method="post" class="deleteForm">
+					<button type="submit" class="btn submit-btn deleteBtn">삭제</button>
+					<input type="hidden" name="support_num" value="${supportDTO.support_num }">
+				</form>
+			</c:if>
 		</div>
 	</main>
 

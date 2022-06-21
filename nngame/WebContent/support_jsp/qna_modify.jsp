@@ -24,21 +24,8 @@
 
 	<!-- main -->
 	<main>
-		<form action="/support/updateSuccess.io" method="post" class="checkForm">
+		<form action="/support/updateOk.io" method="post" class="checkForm">
 			<div class="qna__write">
-			<%-- 
-				<div>
-					<div class="qna__write-title">작성자</div>
-					<div class="qna__write-box">
-						<div class="form-floating">
-							<!-- support_writer 필요함 -->
-							<input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
-							name="support_writer" style="width: 600px;" value="${supportDTO.support_writer }" disabled>
-							<label for="floatingInput">name</label>
-						</div>
-					</div>
-				</div>
-			--%>
 				<div>
 					<div class="qna__write-title">문의</div>
 					<div class="qna__write-box">

@@ -21,7 +21,7 @@ public class UserJoinAction implements Action{
 		//시퀀스, #{userid}, #{userpw}, #{usernickname}, #{userphone}, #{userbirth}, SYSDATE 
 		user.setUser_email(request.getParameter("userid"));
 		user.setUser_pwd(request.getParameter("userpw"));
-		user.setUser_email(request.getParameter("usernickname"));
+		user.setUser_nickname(request.getParameter("usernickname"));
 		user.setUser_phone(request.getParameter("userphone"));
 		user.setUser_birth(request.getParameter("userbirth"));
 		

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!Doctype html>
 <html lang="en">
 <head>
@@ -48,7 +49,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<%-- req 변수 선언 --%>
+				<%-- 글 목록 --%>
 				<c:choose>
 					<c:when test="${empty supportList}">
 						<tr height="40px" valign="middle">
@@ -84,9 +85,21 @@
 		<table class="qna__table">
 			<tr>
 				<td class="qna__paging">
+					<%-- 이전 페이지(<) 버튼 표시 --%>
 					<c:if test="${currentPage > 5 }">
-						<a class="qna__paging-move" href="?page=${currentPage - 5 }"><i class="fa-solid fa-angle-left"></i></a>
+						<%-- 이전 페이지로 돌아올 때 돌아온 페이지의 마지막 글에 오게끔 --%>
+						<fmt:parseNumber var="page" value="${currentPage / 5 }" integerOnly="true" />
+						<c:choose>
+							<c:when test="${currentPage % 5 == 0 }">
+								<a class="qna__paging-move" href="?page=${(page - 1) * 5 }"><i class="fa-solid fa-angle-left"></i></a>
+							</c:when>
+							<c:otherwise>							
+								<a class="qna__paging-move" href="?page=${page * 5 }"><i class="fa-solid fa-angle-left"></i></a>
+							</c:otherwise>
+						</c:choose>
 					</c:if>
+					
+					<%-- 페이지 넘버 표시 --%>
 					<c:forEach var="i" begin="${startPage }" end="${endPage }">
 						<c:choose>
 							<c:when test="${i == currentPage }">
@@ -99,15 +112,19 @@
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
+					
+					<%-- 다음 페이지(>) 버튼 표시 --%>
 					<c:if test="${endPage < totalPage }">
+						<%-- 다음 페이지 넘어갈 때 넘어갈 페이지의 첫 번째 글에 오게끔 --%>
+						<fmt:parseNumber var="page" value="${currentPage / 5 }" integerOnly="true" />
 						<c:choose>
-							<c:when test="${currentPage + 5 > totalPage }">
-								<a class="qna__paging-move" href="?page=${totalPage }"><i class="fa-solid fa-angle-right"></i></a>
+							<c:when test="${currentPage % 5 == 0 }">
+								<a class="qna__paging-move" href="?page=${(page - 1) * 5 + 6 }"><i class="fa-solid fa-angle-right"></i></a>
 							</c:when>
-							<c:otherwise>
-								<a class="qna__paging-move" href="?page=${currentPage + 5 }"><i class="fa-solid fa-angle-right"></i></a>
+							<c:otherwise>									
+								<a class="qna__paging-move" href="?page=${page * 5 + 6 }"><i class="fa-solid fa-angle-right"></i></a>
 							</c:otherwise>
-						</c:choose>
+						</c:choose>		
 					</c:if>
 				</td>			
 			</tr>

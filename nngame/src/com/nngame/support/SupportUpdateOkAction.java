@@ -15,6 +15,13 @@ public class SupportUpdateOkAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		
+		// 여기도 유저 세션 가져와야 할듯..?
+		// if(usernum == sdto.usernum){
+		//	정상실행
+		// } else{
+		//	warning 페이지 하나 만들자(잘못된 접근이에요)
+		// }
+		
 		SupportDAO sdao = new SupportDAO();
 		SupportDTO sdto = new SupportDTO();
 		
