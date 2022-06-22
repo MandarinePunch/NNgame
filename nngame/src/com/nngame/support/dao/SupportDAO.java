@@ -40,7 +40,7 @@ public class SupportDAO {
 		return bean;
 	}
 	
-	// 유저db만들어지면 써보자
+	// support 글 삽입
 	public void insertBoard(SupportDTO sdto) {
 		sqlsession.insert("Support.insertBoard", sdto);
 	}
@@ -58,7 +58,8 @@ public class SupportDAO {
 	// 글 상세 번호 가져오기
 	public int getDetailNum() {
 		return sqlsession.selectOne("Support.getDetailNum");
-	}
+	}	
+	
 }
 
 

@@ -64,7 +64,7 @@
 	<%@ include file="/tags/footer.jsp"%>
 
 	<!-- 이메일 누락 체크 Script -->
-	<script src="../js/login/findpw.js"></script>
+	<script src="/js/login/findpw.js"></script>
 
 	<!-- Bootstrap 옵션 -->
 	<script

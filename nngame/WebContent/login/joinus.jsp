@@ -76,12 +76,11 @@
 		</div>
 	</div>
 
-
 	<!-- footer -->
 	<%@ include file="/tags/footer.jsp"%>
 
 	<!-- 회원가입 폼 Script -->
-	<script src="../js/login/joinus.js"></script>
+	<script src="/js/login/joinus.js"></script>
 
 	<!-- Bootstrap 옵션 -->
 	<script

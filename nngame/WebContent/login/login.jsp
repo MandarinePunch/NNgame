@@ -66,7 +66,7 @@
 	<%@ include file="/tags/footer.jsp"%>
 
 	<!-- 로그인 폼 Script -->
-	<script src="../js/login/login.js"></script>
+	<script src="/js/login/login.js"></script>
 
 	<!-- Bootstrap 옵션 -->
 	<script
