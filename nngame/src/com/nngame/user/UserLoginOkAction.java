@@ -15,8 +15,8 @@ public class UserLoginOkAction implements Action{
 		UserDAO udao = new UserDAO();
 		UserDTO udto = new UserDTO();
 		
-		String userid = request.getParameter("userid");
-		String userpw = request.getParameter("userpw");
+		String userid = request.getParameter("user_email");
+		String userpw = request.getParameter("user_pwd");
 		
 		if(udao.login(userid,userpw)) {		// 로그인 성공
 			System.out.println("로그인 성공");
@@ -28,7 +28,7 @@ public class UserLoginOkAction implements Action{
 			forward.setPath("/index.jsp");
 		} else {							// 로그인 실패
 			System.out.println("로그인 실패");
-			forward.setPath("/login/login.jsp?flag=false");
+			forward.setPath("/login/login.jsp");
 		}
 		
 		forward.setRedirect(false);
