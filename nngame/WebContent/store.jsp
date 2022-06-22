@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,13 +23,13 @@
 		<section>
 		   <ul class="nav justify-content-center">
 		      <li class="store-nav store-icon-width store-active">
-		        <a class="nav-link" aria-current="page" href="#">
+		        <a class="nav-link" aria-current="page" href="/store/Storegamelist">
 		          <div class="store-icon-all"></div>
 		          <p class="store-icon-p">전체</p> 
 		        </a>
 		      </li>
 		      <li class="store-nav store-icon-width">
-		        <a class="nav-link" href="#">
+		        <a class="nav-link" href="/store/store.jsp?">
 		          <div class="store-icon-action"></div>
 		          <p class="store-icon-p">액션</p>
 		        </a>
