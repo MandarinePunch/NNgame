@@ -28,16 +28,27 @@ public class SupportFrontController extends HttpServlet {
 		String requestURI = request.getRequestURI();
 		ActionForward forward = null;
 		
-		if(requestURI.equals("/support/List")) {
+		if(requestURI.equals("/support/List")) {			// 고객지원 목록
 			forward = new SupportListAction().execute(request, response);
-		} else if(requestURI.equals("/support/detail")) {
+			
+		} else if(requestURI.equals("/support/detail")) {	// 고객지원 글 상세
 			forward = new SupportDetailAction().execute(request, response);
-		} else if(requestURI.equals("/support/delete")) {
+			
+		} else if(requestURI.equals("/support/delete")) {	// 고객지원 글 삭제
 			forward = new SupportDeleteAction().execute(request, response);
-		} else if(requestURI.equals("/support/update")) {
+			
+		} else if(requestURI.equals("/support/update")) {	// 고객지원 글 수정
 			forward = new SupportUpdateAction().execute(request, response);
-		} else if(requestURI.equals("/support/updateSuccess")){
-			forward = new SupportUpdateSuccessAction().execute(request, response);
+			
+		} else if(requestURI.equals("/support/updateOk.io")) {	// 고객지원 글 수정 성공
+			forward = new SupportUpdateOkAction().execute(request, response);
+			
+		} else if(requestURI.equals("/support/insert")) {	// 고객지원 글 작성(단순 경로 지정)
+			forward = new ActionForward(false, "/support_jsp/qna_write.jsp");
+			
+		} else if(requestURI.equals("/support/insertOk.io")) {	// 고객지원 글 작성 성공
+			forward = new SupportWriteOkAction().execute(request, response);
+			
 		}
 		
 		if(forward != null) {			

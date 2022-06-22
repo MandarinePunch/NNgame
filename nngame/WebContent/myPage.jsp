@@ -81,7 +81,7 @@
 			<!-- 회원 탈퇴 -->
 			<div style="padding: 10px;"></div>
 			<div class="row mypage-boxstyle">
-				<form action="#">
+				<form action="/user/userExit.io">
 					<a data-bs-toggle="collapse" href="#collapseExit" role="button"
 						aria-expanded="false" aria-controls="collapseExit"> 회원 탈퇴 </a>
 					<div class="collapse" id="collapseExit">
@@ -95,7 +95,8 @@
 								<p>3. 탈퇴 후 연동된 소셜 계정 정보도 사라지며, 소셜 로그인이 불가능합니다.</p>
 								<p>4. 현재 비밀번호를 입력하고 탈퇴하기를 누르시면 위 내용에 동의하는 것으로 간주됩니다.</p>
 							</div>
-							<input type="password" class="form-control" id="mod_outpass" placeholder="현재 비밀번호 입력">
+							<input type="hidden" name="user_email" value="${sessionScope.udto.getUser_email() }">
+							<input type="password" name="user_pwd" class="form-control" id="mod_outpass" placeholder="현재 비밀번호 입력">
 							<div style="text-align: center;">
 								<input type="submit" class="btn submit-btn"	style="width: 40%; margin: 15px 0;" value="수정하기">
 							</div>

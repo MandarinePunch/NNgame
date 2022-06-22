@@ -5,23 +5,18 @@
 <mapper namespace="Support">
 
 	<!-- qna board의 모든 list불러옴 -->
-	<select id="getSupportList" resultType="SupportDTO">
-		SELECT * FROM SUPPORT ORDER BY SUPPORT_NUM DESC
+	<select id="getBoardList" parameterType="hashmap" resultType="SupportDTO">
+		SELECT *
+		FROM (	SELECT rownum R, D.*
+				FROM (SELECT * FROM SUPPORT s ORDER BY SUPPORT_NUM DESC) D
+				) B
+		WHERE B.R BETWEEN #{startRow} AND #{endRow}
 	</select>
 	
 	<!-- qna board의 모든 list의 개수를 불러옴 -->
 	<select id="getSupportCount" resultType="_int">
 		SELECT count(*) FROM SUPPORT
 	</select>
-	
-	<!-- support_writer 컬럼 추가 요함
-	<select id="getUserName" resultType="string">
-		SELECT u.USER_NICKNAME
-		FROM SUPPORT s JOIN USERINFO u
-		ON s.USER_NUM = u.USER_NUM
-		ORDER BY SUPPORT_NUM DESC
-	</select>
-	 -->
 	 
 	<!-- qna board 글 상세 목록 조회 -->
 	<select id="getOneWriting" parameterType="string" resultType="SupportDTO">
@@ -31,7 +26,7 @@
 	<!-- 글 삽입(실제 user_num 필요) -->
 	<insert id="insertBoard" parameterType="SupportDTO">
 		INSERT INTO SUPPORT
-		VALUES (#{support_num}, #{support_type}, #{support_title}, #{support_content}, #{support_date}, #{support_result}, #{user_num})
+		VALUES (SEQ_SUPPORT_NO.NEXTVAL, #{support_type}, #{support_title}, #{support_content}, sysdate, '진행중', #{user_num}, #{support_writer})
 	</insert>
 	
 	<!-- 글 삭제 -->
@@ -45,5 +40,10 @@
 		SET SUPPORT_TYPE = #{support_type}, SUPPORT_TITLE = #{support_title}, SUPPORT_CONTENT = #{support_content}
 		WHERE SUPPORT_NUM = #{support_num}
 	</update>
+	
+	<!-- 글 상세 번호 가져오기 -->
+	<select id="getDetailNum" resultType="_int">
+		SELECT seq_support_no.currval FROM dual
+	</select>
 	
 </mapper>

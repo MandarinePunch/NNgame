@@ -1,4 +1,4 @@
-package com.nngame.user;
+package com.nngame.warning;
 
 import java.io.IOException;
 
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.nngame.action.ActionForward;
 
-@WebServlet(name = "UserFrontController", urlPatterns = "/user/*")
-public class UserFrontController extends HttpServlet {
+@WebServlet(name = "WarningFrontController", urlPatterns = "/warning/*")
+public class WarningFrontController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,18 +27,10 @@ public class UserFrontController extends HttpServlet {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String requestURI = request.getRequestURI();
 		ActionForward forward = null;
-
-		if(requestURI.equals("/user/userJoin.io")) {
-			forward = new UserJoinAction().execute(request, response);
-		} else if(requestURI.equals("/user/userLoginOk.io")) {
-			forward = new UserLoginOkAction().execute(request, response);
-		} else if(requestURI.equals("/user/userPwFind")) {
-			forward = new UserPwFindAction().execute(request, response);
-		} else if(requestURI.equals("/user/userLogout.io")) {
-			forward = new UserLogOutAction().execute(request, response);
-		} else if(requestURI.equals("/user/userExit.io")) {
-			forward = new UserExitAction().execute(request, response);
-		}
+		
+		if(requestURI.equals("/warning/approach")) {
+			forward = new ActionForward(false, "/warning_jsp/preventURL.jsp");
+		} 
 		
 		if(forward != null) {			
 			if(forward.isRedirect()) {
@@ -50,3 +42,11 @@ public class UserFrontController extends HttpServlet {
 		}
 	}
 }
+
+
+
+
+
+
+
+

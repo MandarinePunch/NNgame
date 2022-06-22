@@ -29,7 +29,7 @@
 	<div class="container login">
 		<!-- Login Form -->
 		<div class="row">
-			<form action="/userLoginOk.io" name="loginform" onsubmit="return checkLogin()">
+			<form action="/user/userLoginOk.io" name="loginform" onsubmit="return checkLogin()" method="post">
 				<div class="mb-3">
 					<label for="InputEmail" class="form-label">이메일</label> <input
 						type="email" class="form-control" id="login_InputEmail"
@@ -66,7 +66,7 @@
 	<%@ include file="/tags/footer.jsp"%>
 
 	<!-- 로그인 폼 Script -->
-	<script src="../js/login/login.js"></script>
+	<script src="/js/login/login.js"></script>
 
 	<!-- Bootstrap 옵션 -->
 	<script

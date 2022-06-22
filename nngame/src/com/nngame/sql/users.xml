@@ -17,4 +17,13 @@
 	<select id="getUserDTO" parameterType="string" resultType="UserDTO">
         SELECT USER_NUM, USER_EMAIL, USER_NICKNAME, USER_PHONE, USER_BIRTH, USER_JOINDATE FROM USERINFO WHERE USER_EMAIL = #{user_email}
 	</select>
+	
+	<!-- Find PW -->
+	<select id = "findpw" parameterType="String" resultType="String">
+		SELECT USER_PWD FROM USERINFO WHERE USER_EMAIL = #{user_email}
+	</select>
+	
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM USERINFO WHERE USER_EMAIL = #{user_email}
+	</delete>
 </mapper>

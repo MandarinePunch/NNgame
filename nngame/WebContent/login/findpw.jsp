@@ -1,6 +1,8 @@
 <!doctype html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html lang="en">
 <head>
 <!-- Required meta tags -->
@@ -30,18 +32,30 @@
 			style="padding-top: 150px; width: 30%; margin: 0 auto; color: white;">
 			<!-- PwFind Form -->
 			<div class="row">
-				<h1 style="font-size: 20px; text-align: center;">비밀번호 찾기</h1>
-				<form action="#" onsubmit="return checkId()">
-					<div class="mb-3">
-						<label for="findPwEmail" class="form-label"
-							style="font-size: 13px;">이메일을 입력해주세요.</label> <input type="email"
-							class="form-control" id="findPwEmail"
-							aria-describedby="emailHelp" onblur="pwfind_focusOut()">
-						<p id="pwfind_id" style="color: red;"></p>
-					</div>
-					<input type="submit" class="btn submit-btn" style="width: 100%;"
-						value="비밀번호 찾기">
-				</form>
+				<c:choose>
+					<c:when test="${empty requestScope.findout}">
+						<h1 style="font-size: 20px; text-align: center;">비밀번호 찾기</h1>
+						<form action="/user/userPwFind" onsubmit="return checkId()"
+							method="post">
+							<div class="mb-3">
+								<label for="findPwEmail" class="form-label"
+									style="font-size: 13px;">이메일을 입력해주세요.</label> <input
+									type="email" class="form-control" id="findPwEmail"
+									name="user_email" aria-describedby="emailHelp"
+									onblur="pwfind_focusOut()">
+								<p id="pwfind_id" style="color: red;"></p>
+							</div>
+							<input type="submit" class="btn submit-btn" style="width: 100%;"
+								value="비밀번호 찾기">
+						</form>
+					</c:when>
+					<c:otherwise>
+						<div align="center">
+							<h2>비밀번호 찾기 결과</h2><br>
+							<h3>${requestScope.findout }</h3>
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>
@@ -50,7 +64,7 @@
 	<%@ include file="/tags/footer.jsp"%>
 
 	<!-- 이메일 누락 체크 Script -->
-	<script src="../js/login/findpw.js"></script>
+	<script src="/js/login/findpw.js"></script>
 
 	<!-- Bootstrap 옵션 -->
 	<script

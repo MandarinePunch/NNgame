@@ -34,6 +34,9 @@
 /* 마이 페이지*/
 @import "./user/mypage.css";
 
+/* 경고 페이지 */
+@import "./warning/warning.css";
+
 /* 전체 바디 컬러 */
 body { background-color: #121212; }
 

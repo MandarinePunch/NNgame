@@ -23,51 +23,66 @@
 	<%@ include file="/tags/header.jsp"%>
 
 	<!-- main -->
-	<main class="qna_write">
+	<c:set var="user" scope="session" value="${udto }" />
+	<c:set var="supportDTO" scope="request" value="${supportDTO }" />
+	<main class="qna__write">
+		<h1 class="qna__detail-h1">문의 내용</h1>
+		
+		<!-- 문의 유형 -->
 		<div>
-			<label class="qna_write-title">작성자</label>
-			<div class="qna_write-box">
-				<div class="form-floating">
-					<input type="text" class="form-control" id="floatingInput"
-						placeholder="name@example.com" style="width: 600px;" value="작성자 필요"
-						disabled> <label for="floatingInput">name</label>
+			<label class="qna__write-title">문의</label>
+			<div class="qna__write-box">
+				<div class="qna__detail-type">
+					${supportDTO.support_type }
 				</div>
 			</div>
 		</div>
+		
+		<!-- 글 제목 -->
 		<div>
-			<label class="qna_write-title">문의</label>
-			<div class="qna_write-box">
-				<div class="form-floating">
-					<input type="text" class="form-control" id="floatingInput"
-						placeholder="name@example.com" style="width: 600px;" value="${supportDTO.support_type }"
-						disabled> <label for="floatingInput">inquiry</label>
+			<label class="qna__write-title">제목</label>
+			<div class="qna__write-box">
+				<div class="qna__detail-title">
+					${supportDTO.support_title }
 				</div>
 			</div>
 		</div>
+		
+		<!-- 글 내용 -->
 		<div>
-			<label class="qna_write-title">제목</label>
-			<div class="qna_write-box">
-				<div class="form-floating">
-					<input type="text" class="form-control" id="floatingInput"
-						placeholder="name@example.com" style="width: 600px;" value="${supportDTO.support_title }"
-						disabled> <label for="floatingInput">title</label>
-				</div>
+			<label class="qna__write-title">내용</label>
+			<div class="qna__write-box">
+				<div class="qna__detail-content">
+					${supportDTO.support_content }
+				</div>					
 			</div>
 		</div>
-		<div>
-			<label class="qna_write-title">내용</label>
-			<div class="qna_write-box">
-				<div class="form-floating">
-					<textarea class="form-control" placeholder="Leave a comment here"
-						id="floatingTextarea2" style="height: 300px; width: 600px;"
-						disabled>${supportDTO.support_content }</textarea>
-					<label for="floatingTextarea2">Comments</label>
-				</div>
+		
+		<!-- 관리자 계정 만들시, 진행중, 완료 업데이트..
+			<div class="qna__progress">
+				<form action="/support/progress" method="post" class="checkProgress">
+					<table class="qna__progress-table">
+						<tr valign="middle">
+							<td align="left" style="padding-left: 10px">
+								<label class="qna__progress-text"><input type="radio" name="support_result" value="진행중" checked>&nbsp;진행중</label>
+								<label class="qna__progress-text"><input type="radio" name="support_result" value="완료" >&nbsp;완료</label>
+							</td>
+							<td align="right">
+								<button type="submit" class="btn" style="color:#ffe403">확인</button>
+								<input type="hidden" name="support_num" value="${supportDTO.support_num }">
+							</td>
+						</tr>
+					</table>	
+				</form>
 			</div>
-		</div>
-			<div class="qna_write-box qna__btn-box">
-				<button type="button" class="btn submit-btn" onclick="location.href='/support/List'">목록</button>
-				<!-- post방식으로 바꾸자 -->
+		 -->
+		
+		<!-- 목록, 수정, 삭제 버튼 -->
+		<div class="qna__write-box qna__btn-box">
+			<button type="button" class="btn submit-btn" onclick="location.href='/support/List'">목록</button>
+			
+			<%-- 현재 로그인된 유저일시에만 수정 및 삭제 가능 --%>
+			<c:if test="${supportDTO.user_num == user.user_num }">				
 				<form action="/support/update" method="post">
 					<button type="submit" class="btn submit-btn">수정</button>
 					<input type="hidden" name="support_num" value="${supportDTO.support_num }">				
@@ -76,7 +91,8 @@
 					<button type="submit" class="btn submit-btn deleteBtn">삭제</button>
 					<input type="hidden" name="support_num" value="${supportDTO.support_num }">
 				</form>
-			</div>
+			</c:if>
+		</div>
 	</main>
 
 	<!-- footer -->
