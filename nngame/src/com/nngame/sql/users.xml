@@ -23,4 +23,7 @@
 		SELECT USER_PWD FROM USERINFO WHERE USER_EMAIL = #{user_email}
 	</select>
 	
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM USERINFO WHERE USER_EMAIL = #{user_email}
+	</delete>
 </mapper>

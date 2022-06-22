@@ -1,5 +1,8 @@
 package com.nngame.user;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,11 +19,11 @@ public class UserPwFindAction implements Action{
 
 		String user_email = request.getParameter("user_email");
 		String findout = udao.findpw(user_email);
-		
-		if(findout != null) {
-			System.out.println(findout);
-		} else { 
-			System.out.println("아이디가 없습니다.");
+
+		if (findout != null) {
+			request.setAttribute("findout", findout);
+		} else {
+			request.setAttribute("findout", "아이디가 없습니다.");
 		}
 		
 		forward.setPath("/login/findpw.jsp");

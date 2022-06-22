@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.nngame.action.ActionForward;
 
-@WebServlet("*.io")
+@WebServlet(name = "UserFrontController", urlPatterns = "/user/*")
 public class UserFrontController extends HttpServlet {
 	
 	@Override
@@ -28,12 +28,16 @@ public class UserFrontController extends HttpServlet {
 		String requestURI = request.getRequestURI();
 		ActionForward forward = null;
 
-		if(requestURI.equals("/UserJoin.io")) {
+		if(requestURI.equals("/user/userJoin.io")) {
 			forward = new UserJoinAction().execute(request, response);
-		} else if(requestURI.equals("/userLoginOk.io")) {
+		} else if(requestURI.equals("/user/userLoginOk.io")) {
 			forward = new UserLoginOkAction().execute(request, response);
-		} else if(requestURI.equals("/userPwFind.io")) {
+		} else if(requestURI.equals("/user/userPwFind")) {
 			forward = new UserPwFindAction().execute(request, response);
+		} else if(requestURI.equals("/user/userLogout.io")) {
+			forward = new UserLogOutAction().execute(request, response);
+		} else if(requestURI.equals("/user/userExit.io")) {
+			forward = new UserExitAction().execute(request, response);
 		}
 		
 		if(forward != null) {			

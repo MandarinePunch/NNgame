@@ -25,7 +25,7 @@
 	<div class="container join">
 		<!-- 회원가입 Form -->
 		<div class="row">
-			<form action="/UserJoin.io" name="joinform" method="post" onsubmit="return checkJoin()">
+			<form action="/user/userJoin.io" name="joinform" method="post" onsubmit="return checkJoin()">
 				<div class="mb-3">
 					<label for="JoinEmail1" class="form-label">이메일</label> <input
 						type="email" class="form-control" id="join_Email"

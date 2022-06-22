@@ -25,13 +25,14 @@ public class UserLoginOkAction implements Action{
 			System.out.println(udto.getUser_email());
 			
 			request.getSession().setAttribute("udto", udto);
-			forward.setPath("/index.jsp");
+			forward.setPath("/");
 		} else {							// 로그인 실패
 			System.out.println("로그인 실패");
 			forward.setPath("/login/login.jsp");
 		}
 		
-		forward.setRedirect(false);
+		//forward.setRedirect(false);
+		forward.setRedirect(true);
 		
 		return forward;
 	}

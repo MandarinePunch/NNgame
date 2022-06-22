@@ -27,10 +27,12 @@ public class UserJoinAction implements Action{
 		
 		if(udao.join(user)) {		// 회원가입 성공
 			forward.setRedirect(true);
-			forward.setPath(request.getContextPath()+ "login/login.jsp");
+			// forward.setPath(request.getContextPath()+ "login/login.jsp");
+			forward.setPath("/login/login.jsp");
 		} else {					// 회원가입 실패
 			forward.setRedirect(true);
-			forward.setPath(request.getContextPath() + "index.jsp");
+			// forward.setPath(request.getContextPath() + "index.jsp");
+			forward.setPath("/");
 		}
 		
 		return forward;

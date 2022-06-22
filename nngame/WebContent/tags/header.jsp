@@ -61,7 +61,7 @@
 								</a></li>
 								<li class="nav-item header__nav-item"><a
 									class="nav-link active" aria-current="page"
-									href="/login/logout.jsp"> <i
+									href="/user/userLogout.io"> <i
 										class="fa-solid fa-arrow-right-from-bracket"></i>
 								</a></li>
 							</c:otherwise>

@@ -53,4 +53,9 @@ public class UserDAO {
 		
 		return result;
 	}
+
+	public void userExit(String user_email) {
+		sqlsession.delete("Users.deleteUser", user_email);
+		System.out.println("회원 탈퇴 성공");
+	}
 }
