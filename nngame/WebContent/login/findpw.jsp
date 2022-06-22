@@ -31,11 +31,11 @@
 			<!-- PwFind Form -->
 			<div class="row">
 				<h1 style="font-size: 20px; text-align: center;">비밀번호 찾기</h1>
-				<form action="#" onsubmit="return checkId()">
+				<form action="/userPwFind.io" onsubmit="return checkId()" method="post">
 					<div class="mb-3">
 						<label for="findPwEmail" class="form-label"
 							style="font-size: 13px;">이메일을 입력해주세요.</label> <input type="email"
-							class="form-control" id="findPwEmail"
+							class="form-control" id="findPwEmail" name="user_email" 
 							aria-describedby="emailHelp" onblur="pwfind_focusOut()">
 						<p id="pwfind_id" style="color: red;"></p>
 					</div>

@@ -22,7 +22,6 @@
 	<%@ include file="/tags/header.jsp"%>
 
 	<!-- mainContents -->
-
 	<div class="container join">
 		<!-- 회원가입 Form -->
 		<div class="row">

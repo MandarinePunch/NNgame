@@ -29,7 +29,7 @@
 	<div class="container login">
 		<!-- Login Form -->
 		<div class="row">
-			<form action="/userLoginOk.io" name="loginform" onsubmit="return checkLogin()">
+			<form action="/userLoginOk.io" name="loginform" onsubmit="return checkLogin()" method="post">
 				<div class="mb-3">
 					<label for="InputEmail" class="form-label">이메일</label> <input
 						type="email" class="form-control" id="login_InputEmail"
