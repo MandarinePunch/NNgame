@@ -45,4 +45,12 @@ public class UserDAO {
 		UserDTO userdata = sqlsession.selectOne("Users.getUserDTO", user_email);
 		return userdata;
 	}
+
+	public String findpw(String user_email) {
+		String result = "";
+		
+		result = sqlsession.selectOne("Users.findpw",user_email);
+		
+		return result;
+	}
 }

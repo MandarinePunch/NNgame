@@ -32,7 +32,9 @@ public class UserFrontController extends HttpServlet {
 			forward = new UserJoinAction().execute(request, response);
 		} else if(requestURI.equals("/userLoginOk.io")) {
 			forward = new UserLoginOkAction().execute(request, response);
-		} 
+		} else if(requestURI.equals("/userPwFind.io")) {
+			forward = new UserPwFindAction().execute(request, response);
+		}
 		
 		if(forward != null) {			
 			if(forward.isRedirect()) {
