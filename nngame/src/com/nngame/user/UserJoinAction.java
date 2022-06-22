@@ -19,11 +19,11 @@ public class UserJoinAction implements Action{
 		ActionForward forward = new ActionForward();
 		
 		//시퀀스, #{userid}, #{userpw}, #{usernickname}, #{userphone}, #{userbirth}, SYSDATE 
-		user.setUser_email(request.getParameter("userid"));
-		user.setUser_pwd(request.getParameter("userpw"));
-		user.setUser_nickname(request.getParameter("usernickname"));
-		user.setUser_phone(request.getParameter("userphone"));
-		user.setUser_birth(request.getParameter("userbirth"));
+		user.setUser_email(request.getParameter("user_email"));
+		user.setUser_pwd(request.getParameter("user_pwd"));
+		user.setUser_nickname(request.getParameter("user_nickname"));
+		user.setUser_phone(request.getParameter("user_phone"));
+		user.setUser_birth(request.getParameter("user_birth"));
 		
 		if(udao.join(user)) {		// 회원가입 성공
 			forward.setRedirect(true);

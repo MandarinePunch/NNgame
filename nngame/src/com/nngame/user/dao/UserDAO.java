@@ -26,13 +26,13 @@ public class UserDAO {
 		return result;
 	}
 
-	public boolean login(String userid, String userpw) {
+	public boolean login(String user_email, String user_pwd) {
 		boolean result = false;
 		
 		HashMap<String, String> datas = new HashMap<>();
 		
-		datas.put("userid", userid);
-		datas.put("userpw", userpw);
+		datas.put("user_email", user_email);
+		datas.put("user_pwd", user_pwd);
 		
 		if((Integer)sqlsession.selectOne("Users.login", datas) == 1) {
 			result = true;
@@ -41,8 +41,8 @@ public class UserDAO {
 		return result;
 	}
 	
-	public UserDTO getUserData(String userid) {
-		UserDTO userdata = sqlsession.selectOne("Users.getUserDTO", userid);
+	public UserDTO getUserData(String user_email) {
+		UserDTO userdata = sqlsession.selectOne("Users.getUserDTO", user_email);
 		return userdata;
 	}
 }

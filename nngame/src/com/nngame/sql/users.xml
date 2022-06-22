@@ -10,11 +10,11 @@
 	
 	<!-- Login -->
 	<select id = "login" parameterType="hashmap" resultType="_int">
-		SELECT COUNT(*) FROM USERINFO WHERE USER_EMAIL = #{userid} and USER_PWD = #{userpw}
+		SELECT COUNT(*) FROM USERINFO WHERE USER_EMAIL = #{user_email} and USER_PWD = #{user_pwd}
 	</select>
 	
 	<!-- UserData 조회 -->
 	<select id="getUserDTO" parameterType="string" resultType="UserDTO">
-        SELECT * FROM USERINFO WHERE USER_EMAIL = #{userid}
+        SELECT USER_NUM, USER_EMAIL, USER_NICKNAME, USER_PHONE, USER_BIRTH, USER_JOINDATE FROM USERINFO WHERE USER_EMAIL = #{user_email}
 	</select>
 </mapper>

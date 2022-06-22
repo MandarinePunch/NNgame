@@ -33,13 +33,13 @@
 				<div class="mb-3">
 					<label for="InputEmail" class="form-label">이메일</label> <input
 						type="email" class="form-control" id="login_InputEmail"
-						aria-describedby="emailHelp" onblur="login_focusOut()" name="userid">
+						aria-describedby="emailHelp" onblur="login_focusOut()" name="user_email">
 					<p id="login_pid" class="login_pred"></p>
 				</div>
 				<div class="mb-3">
 					<label for="InputPassword" class="form-label">비밀번호</label> <input
 						type="password" class="form-control" id="login_InputPassword"
-						onblur="login_focusOut()" name="userpw">
+						onblur="login_focusOut()" name="user_pwd">
 					<p id="login_ppw" class="login_pred"></p>
 				</div>
 				<input type="submit" class="btn submit-btn" style="width: 100%;"
