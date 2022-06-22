@@ -10,10 +10,6 @@
 
 <body>
 	<header>
-		<%--
-			user session을 udto로 전부 받아오는데 그러면 password도 유출될 가능성이 높아
-			필요한 정보만 세션에 넣어보게끔 고쳤으면 좋겠다.
-		 --%>
 		<%-- user session 변수 설정 --%>
 		<c:set var="udto" scope="session" value="${udto }" />
 		
