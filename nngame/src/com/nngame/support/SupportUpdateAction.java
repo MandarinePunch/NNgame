@@ -14,12 +14,6 @@ public class SupportUpdateAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		
-		// if(usernum == sdto.usernum){
-		//	정상실행
-		// } else{
-		//	warning 페이지 하나 만들자(잘못된 접근이에요)
-		// }
-		
 		String support_num = request.getParameter("support_num");
 
 		// support_num과 같은 글 하나를 가져옴

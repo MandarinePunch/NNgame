@@ -32,20 +32,9 @@
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item header__nav-item"><a class="nav-link active"
 							aria-current="page" href="/store.jsp">스토어</a></li>
-						<li class="nav-item header__nav-item">
-							<c:choose>
-								<c:when test="${empty udto }">
-									<a class="nav-link active" aria-current="page" href="/warning/login">
-										고객지원
-									</a>
-								</c:when>
-								<c:otherwise>
-									<a class="nav-link active" aria-current="page" href="/support/List">
-										고객지원
-									</a>
-								</c:otherwise>
-							</c:choose>
-							
+						<li class="nav-item header__nav-item">	
+							<a class="nav-link active" aria-current="page" 
+							href="/support/List">고객지원</a>
 						</li>
 						<li class="nav-item header__nav-item"><a class="nav-link active"
 							aria-current="page" href="/library.jsp">라이브러리</a></li>
@@ -86,6 +75,13 @@
 			</div>
 		</nav>
 	</header>
+	
+	<!-- 쓰실 분들 쓰셔도 됩니다 -->
+	<script>
+		function pleaseLogin() {
+			alert("로그인이 필요한 서비스입니다.");
+		}
+	</script>
 	
 	<!-- fontawesome 아이콘 (fontawesome 아이콘 쓰고 싶으면 이 스크립트 복붙해서 쓰면 됩니다.) -->
 	<script src="https://kit.fontawesome.com/516437ec88.js" crossorigin="anonymous"></script>

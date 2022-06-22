@@ -15,14 +15,6 @@ public class SupportDeleteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		
-		// 유저 가져올 세션
-		HttpSession session = request.getSession();
-		// if(usernum == sdto.usernum){
-		//	dao정상실행
-		// } else{
-		//	warning 페이지 하나 만들자(잘못된 접근이에요)
-		// }	
-		
 		SupportDAO sdao = new SupportDAO();
 		
 		String support_num = request.getParameter("support_num");
