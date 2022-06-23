@@ -37,7 +37,11 @@ public class UserFrontController extends HttpServlet {
 		} else if(requestURI.equals("/user/userLogout.io")) {
 			forward = new UserLogOutAction().execute(request, response);
 		} else if(requestURI.equals("/user/userExit.io")) {
-			forward = new UserExitAction().execute(request, response);
+			new UserExitAction().execute(request, response);
+		} else if(requestURI.equals("/user/userMod.io")) {
+			forward = new UserModAction().execute(request, response);
+		} else if(requestURI.equals("/user/userModPw.io")) {
+			new UserModPwAction().execute(request, response);
 		}
 		
 		if(forward != null) {			

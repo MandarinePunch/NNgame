@@ -23,7 +23,18 @@
 		SELECT USER_PWD FROM USERINFO WHERE USER_EMAIL = #{user_email}
 	</select>
 	
+	<!-- 회원 탈퇴 -->
 	<delete id="deleteUser" parameterType="String">
 		DELETE FROM USERINFO WHERE USER_EMAIL = #{user_email}
 	</delete>
+	
+	<!-- 닉네임,전화번호 변경 -->
+	<update id="modUser" parameterType="hashmap">
+		UPDATE USERINFO SET USER_NICKNAME = #{user_nickname}, USER_PHONE = #{user_phone} WHERE USER_EMAIL = #{user_email}
+	</update>
+	
+	<!-- 패스워드 변경 -->
+	<update id="modPw" parameterType="hashmap">
+		UPDATE USERINFO SET USER_PWD = #{user_pwd} WHERE USER_EMAIL = #{user_email}
+	</update>
 </mapper>

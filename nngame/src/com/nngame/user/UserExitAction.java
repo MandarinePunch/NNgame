@@ -1,5 +1,8 @@
 package com.nngame.user;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,10 +25,35 @@ public class UserExitAction implements Action{
 			System.out.println("패스워드 일치, 회원탈퇴 시작");
 			udao.userExit(user_email);
 			
+			PrintWriter out;
+			try {
+				out = response.getWriter();
+				response.setContentType("text/html; charset=utf-8");
+				out.println("<script language='javascript'>");
+				out.println("alert('회원탈퇴가 완료되었습니다.')");
+				out.println("location.replace('/');");
+				out.print("</script>");
+				out.flush();
+			} catch (IOException e) {
+				System.out.println("탈퇴 성공 PrintWrtier 오류");
+			}
+
 			request.getSession().invalidate();	// 세션 날리기
 			forward.setRedirect(true);
 			forward.setPath("/");
 		} else {							// 로그인 실패하면 얼럿창 띄우고 다시 mypage
+			try {
+				PrintWriter out = response.getWriter();
+				response.setContentType("text/html; charset=utf-8");
+				out.println("<script language='javascript'>");
+				out.println("alert('패스워드가 일치하지 않습니다.')");
+				out.println("location.replace('/myPage.jsp');");
+				out.print("</script>");
+				out.flush();
+			} catch (IOException e) {
+				System.out.println("PrintWriter 오류");
+			}
+
 			System.out.println("패스워드 불일치");
 			forward.setRedirect(true);
 			forward.setPath("/myPage.jsp");

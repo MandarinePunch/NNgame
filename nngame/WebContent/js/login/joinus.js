@@ -21,6 +21,9 @@ function checkJoin() {
 	} else if (phnum == "") {
 		document.getElementById("join_pphnum").innerHTML = "전화번호를 입력해주세요.";
 		return false;
+	} else if (phnum.length > 14) {
+		document.getElementById("join_pphnum").innerHTML = "전화번호를 정확히 입력해주세요.";
+		return false;
 	} else if (birthday == "") {
 		document.getElementById("join_pbirth").innerHTML = "생년월일을 입력해주세요.";
 		return false;

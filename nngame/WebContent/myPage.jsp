@@ -33,10 +33,11 @@
 			
 			<!-- 회원정보 수정 -->
 			<div class="row mypage-boxstyle">
-				<form action="#" onsubmit="#">
+				<form action="/user/userMod.io" onsubmit="return checkModNick()" method="post">
 					<div class="mb-3">
 						<label for="mod_Email" class="form-label">이메일</label> 
 						<input type="email"	class="form-control" id="mod_Email" aria-describedby="emailHelp" value="${sessionScope.udto.getUser_email() }" disabled>
+						<input type="hidden" name="user_email" value="${sessionScope.udto.getUser_email() }">
 					</div>
 					<div class="mb-3">
 						<label for="mod_birth" class="form-label">생년월일</label>
@@ -44,11 +45,11 @@
 					</div>
 					<div class="mb-3">
 						<label for="mod_nickname" class="form-label">닉네임</label>
-						<input type="text" class="form-control" id="mod_nickname">
+						<input type="text" class="form-control" id="mod_nickname" name="user_nickname" value="${sessionScope.udto.getUser_nickname() }">
 					</div>
 					<div class="mb-3">
 						<label for="mod_phone" class="form-label">전화번호</label>
-						<input type="tel" class="form-control" id="mod_phone">
+						<input type="tel" class="form-control" id="mod_phone" name="user_phone" value="${sessionScope.udto.getUser_phone() }">
 					</div>
 					<div style="text-align: center;">
 					<input type="submit" class="btn submit-btn" style="width: 40%; margin : 10px 0;"
@@ -60,13 +61,14 @@
 			<!-- 비밀번호 변경 -->
 			<div style="padding: 10px;"></div>
 			<div class="row mypage-boxstyle">
-				<form action="#" onsubmit="#">
+				<form action="/user/userModPw.io" onsubmit="return checkModPw()" method="post">
 					<label for="mod_pass1" class="form-label">비밀번호</label>
 					<div class="mb-3">
-						<input type="password" class="form-control" id="mod_beforepass" placeholder="현재 비밀번호">
+						<input type="hidden" name="modid" value="${sessionScope.udto.getUser_email() }">
+						<input type="password" class="form-control" id="mod_beforepass" name="modpw" placeholder="현재 비밀번호">
 					</div>
 					<div class="mb-3">
-						<input type="password" class="form-control" id="mod_newpass" placeholder="새 비밀번호">
+						<input type="password" class="form-control" id="mod_newpass" name="modnewpw" placeholder="새 비밀번호">
 					</div>
 					<div class="mb-3">
 						<input type="password" class="form-control" id="mod_newpasscheck" placeholder="새 비밀번호 확인">
@@ -81,7 +83,7 @@
 			<!-- 회원 탈퇴 -->
 			<div style="padding: 10px;"></div>
 			<div class="row mypage-boxstyle">
-				<form action="/user/userExit.io">
+				<form action="/user/userExit.io" method="post">
 					<a data-bs-toggle="collapse" href="#collapseExit" role="button"
 						aria-expanded="false" aria-controls="collapseExit"> 회원 탈퇴 </a>
 					<div class="collapse" id="collapseExit">
@@ -110,6 +112,9 @@
 	<!-- footer -->
 	<%@ include file="/tags/footer.jsp"%>
 
+	<!-- UserMod js -->
+	<script src="/js/login/usermod.js"></script>
+	
 	<!-- Bootstrap 옵션 -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
