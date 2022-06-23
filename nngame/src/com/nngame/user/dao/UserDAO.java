@@ -58,4 +58,26 @@ public class UserDAO {
 		sqlsession.delete("Users.deleteUser", user_email);
 		System.out.println("회원 탈퇴 성공");
 	}
+
+	public void usermod(String user_email, String user_nickname, String user_phone) {
+		HashMap<String, String> datas = new HashMap<>();
+		
+		datas.put("user_email", user_email);
+		datas.put("user_nickname", user_nickname);
+		datas.put("user_phone", user_phone);
+		
+		sqlsession.update("Users.modUser", datas);
+		
+		System.out.println("유저 정보 수정 완료");
+	}
+
+	public void modPw(String user_email, String user_pwd) {
+		HashMap<String, String> datas = new HashMap<>();
+		
+		datas.put("user_email", user_email);
+		datas.put("user_pwd", user_pwd);
+		
+		sqlsession.update("Users.modPw", datas);
+		System.out.println("비밀번호 변경 성공");
+	}
 }
