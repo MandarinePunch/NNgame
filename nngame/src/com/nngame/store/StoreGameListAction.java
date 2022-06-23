@@ -13,13 +13,24 @@ public class StoreGameListAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		StoreDAO sdao = new StoreDAO();
-		System.out.println("액션도착");
-		// 전체 게임수 
+		
+		// 전체 게임수 가져오기
 		int totalCnt = sdao.getStoreGameCnt();
-		System.out.println("토탈" + totalCnt);
+		
+		// 장르별 선택시
+		String genre = request.getParameter("genre");
+		
+		// 보내기
+		// 게임수
 		request.setAttribute("totalCnt", totalCnt);
+		
+		
+		
+		request.setAttribute("genrelist",sdao.getGenreList(genre));
+		// 전체게임리스트
 		request.setAttribute("storegamelist", sdao.getStoreGameList());
 		
+		// forward방식으로 보내기
 		forward.setRedirect(false);
 		forward.setPath( request.getContextPath() + "/store.jsp" );
 		

@@ -27,7 +27,7 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item header__nav-item"><a class="nav-link active"
-							aria-current="page" href="/store.jsp">스토어</a></li>
+							aria-current="page" href="/store/Storegamelist">스토어</a></li>
 						<li class="nav-item header__nav-item">	
 							<a class="nav-link active" aria-current="page" 
 							href="/support/List">고객지원</a>

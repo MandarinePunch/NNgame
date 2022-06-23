@@ -31,7 +31,7 @@
 		        </a>
 		      </li>
 		      <li class="store-nav store-icon-width">
-		        <a class="nav-link" href="/store/store.jsp?">
+		        <a class="nav-link" href="/store/Storegamelist?genre=ACTION">
 		          <div class="store-icon-action"></div>
 		          <p class="store-icon-p">액션</p>
 		        </a>

@@ -32,6 +32,13 @@ public class StoreDAO {
 		System.out.println(cnt);
 		return sqlsession.selectOne("Store.getStoreGameCnt");
 	}
+
+	// 장르별 게이리스트 받기
+	public List<StoreDTO> getGenreList(String genre) {
+		List<StoreDTO> genrelist = sqlsession.selectList("Store.getGenreList", genre );
+		
+		return genrelist;
+	}
 	
 	
 	
