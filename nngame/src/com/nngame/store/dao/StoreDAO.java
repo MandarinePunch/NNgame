@@ -26,18 +26,21 @@ public class StoreDAO {
 		return storegamelist;
 	}
 	
-	// 게임수 받기
+	// 모든 게임수 받기
 	public int getStoreGameCnt() {
-		int cnt = sqlsession.selectOne("Store.getStoreGameCnt");
-		System.out.println(cnt);
 		return sqlsession.selectOne("Store.getStoreGameCnt");
 	}
 
-	// 장르별 게이리스트 받기
-	public List<StoreDTO> getGenreList(String genre) {
+	// 장르별 게임리스트 받기
+	public List<StoreDTO> getGenreList(int genre) {
 		List<StoreDTO> genrelist = sqlsession.selectList("Store.getGenreList", genre );
 		
 		return genrelist;
+	}
+	
+	// 장르별 게임수 받기
+	public int getGenreCnt(int genre) {
+		return sqlsession.selectOne("Store.getGenreCnt", genre);
 	}
 	
 	

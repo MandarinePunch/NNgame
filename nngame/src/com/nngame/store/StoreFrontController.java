@@ -27,13 +27,15 @@ public class StoreFrontController extends HttpServlet{
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String requestURI = request.getRequestURI();
 		ActionForward forward = null;
-		System.out.println(requestURI);
+		
+	
 		switch(requestURI) {
 			case "/store/Storegamelist":
 				forward = new StoreGameListAction().execute(request, response);
 				break;
-			
-				
+			case "/store/Storegenrelist":
+				forward = new StoreGenreListAction().execute(request, response);
+				break;
 		}
 		
 		

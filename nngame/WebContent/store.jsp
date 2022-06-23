@@ -17,6 +17,7 @@
 <body>
 	<c:set var="totalCnt" scope="request" value="${totalCnt }"/>
 	<c:set var="storegamelist" scope="request" value="${storegamelist }"/>
+	<c:set var="genrelist" scope="request" value="${genrelist }"/>
 	<!-- header -->
 	<%@ include file="/tags/header.jsp"%>
 	<!-- store 시작 -->
@@ -24,50 +25,50 @@
 		<!-- 카테고리 아이콘바 -->
 		<section>
 		   <ul class="nav justify-content-center">
-		      <li class="store-nav store-icon-width store-active">
+		      <li class="store-nav store-icon-width">
 		        <a class="nav-link" aria-current="page" href="/store/Storegamelist">
 		          <div class="store-icon-all"></div>
 		          <p class="store-icon-p">전체</p> 
 		        </a>
 		      </li>
 		      <li class="store-nav store-icon-width">
-		        <a class="nav-link" href="/store/Storegamelist?genre=ACTION">
+		        <a class="nav-link" href="/store/Storegenrelist?genre=1">
 		          <div class="store-icon-action"></div>
 		          <p class="store-icon-p">액션</p>
 		        </a>
 		      </li>
 		      <li class="store-nav store-icon-width">
-		        <a class="nav-link" href="#">
+		        <a class="nav-link" href="/store/Storegenrelist?genre=4">
 		          <div class="store-icon-indi"></div>
 		          <p class="store-icon-p">인디</p>
 		        </a>
 		      </li>
 		      <li class="store-nav store-icon-width">
-		        <a class="nav-link" href="#">
+		        <a class="nav-link" href="/store/Storegenrelist?genre=5">
 		          <div class="store-icon-rpg"></div>
 		          <p class="store-icon-p">RPG</p>
 		        </a>
 		      </li>
 		      <li class="store-nav store-icon-width">
-		        <a class="nav-link" href="#">
+		        <a class="nav-link" href="/store/Storegenrelist?genre=3">
 		          <div class="store-icon-horror"></div>
 		          <p class="store-icon-p">호러</p>
 		        </a>
 		      </li>
 		      <li class="store-nav store-icon-width">
-		        <a class="nav-link" href="#">
+		        <a class="nav-link" href="/store/Storegenrelist?genre=6">
 		          <div class="store-icon-sports"></div>
 		          <p class="store-icon-p">스포츠</p>
 		        </a>
 		      </li>
 		      <li class="store-nav store-icon-width">
-		        <a class="nav-link" href="#">
+		        <a class="nav-link" href="/store/Storegenrelist?genre=2">
 		          <div class="store-icon-fps"></div>
 		          <p class="store-icon-p">FPS</p>
 		        </a>
 		      </li>
 		      <li class="store-nav store-icon-width">
-		        <a class="nav-link" href="#">
+		        <a class="nav-link" href="/store/Storegenrelist?genre=7">
 		          <div class="store-icon-strategy"></div>
 		          <p class="store-icon-p">전략</p>
 		        </a>
@@ -117,6 +118,23 @@
 					</c:forEach>	
 				</div>
 			</c:when>
+			
+			<c:when test="${genrelist != null and fn:length(genrelist) > 0 }">
+				<div class="row row-cols-1 row-cols-md-6 g-4 store-row">
+					<c:forEach var="glist" items="${genrelist }">
+						<div class="col">
+							<a class="card h-100 store-card" href="/gamedetail.jsp"> 
+								<img src="/img/games/${glist.imageDTO.image_main }" class="card-img-top" alt="...">
+								<div class="card-body store-card-body">
+									<h5 class="card-title">${glist.gameDTO.game_name } </h5>
+									<p class="card-text">${glist.gameDTO.game_price }</p>
+								</div>
+							</a>
+						</div>
+					</c:forEach>	
+				</div>
+			</c:when>
+			
 			<c:otherwise>
 				<div>
 					<h3>찾으시는 게임 목록이 없습니다.</h3>
