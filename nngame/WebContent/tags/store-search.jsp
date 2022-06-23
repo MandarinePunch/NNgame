@@ -9,8 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:set var="storegamelist" value="${requestScope.storegamelist }"/>
-	<c:set var="totalCnt" value="${requestScope.totalCnt }"/>
+	
 	<!-- 정렬하기 + 총개수  -->
 	<section class="store-range">
 		<ul class="nav nav-pills">
@@ -29,33 +28,22 @@
 		</ul>
 		<div class="store-nav">
 			<p class="store-nav-p">
-				총 개수 <span>${totalCnt }</span>개
+				총 개수 <span>2</span>개
 			</p>
 		</div>
 	</section>
 	<!-- 게임 썸네일 -->
 	<div class="row row-cols-1 row-cols-md-6 g-4 store-row">
-		<c:choose>
-			<c:when test="${storegamelist != null and fn:length(storegamelist) > 0 }">
-				<c:forEach var="gamelist" items="${storegamelist }">
-					<div class="col">
-						<a class="card h-100 store-card" href="/gamedetail.jsp"> <img
-							src="./img/games/indi/sims/indi-thumbnail-sims.jpg"
-							class="card-img-top" alt="...">
-							<div class="card-body store-card-body">
-								<h5 class="card-title">${gamelist.game_name }</h5>
-								<p class="card-text">${gamelist.game_price }</p>
-							</div>
-						</a>
-					</div>
-				</c:forEach>
-			</c:when>
-			<c:otherwise>
-				찾으시는 게임이 없습니다.
-			</c:otherwise>
-		</c:choose>
-		
-		
+		<div class="col">
+			<a class="card h-100 store-card" href="/gamedetail.jsp"> 
+				<img src="./img/games/indi/sims/indi-thumbnail-sims.jpg" class="card-img-top" alt="...">
+				<div class="card-body store-card-body">
+					<h5 class="card-title"></h5>
+					<p class="card-text"></p>
+				</div>
+			</a>
+		</div>
+			
 	</div>
 </body>
 </html>

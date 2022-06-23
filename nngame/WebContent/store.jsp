@@ -11,10 +11,12 @@
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <title>NNgame</title>
-<link rel="stylesheet" href="./css/style.css" />
+<link rel="stylesheet" href="/css/style.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
+	<c:set var="totalCnt" scope="request" value="${totalCnt }"/>
+	<c:set var="storegamelist" scope="request" value="${storegamelist }"/>
 	<!-- header -->
 	<%@ include file="/tags/header.jsp"%>
 	<!-- store 시작 -->
@@ -74,8 +76,53 @@
 	    </section>
 		<!-- 정렬하기 + 총개수  -->
 	    <!-- 게임 썸네일 -->
-	   	<%@ include file="./tags/store-search.jsp"%>
-
+<%-- 	   	<%@ include file="./tags/store-search.jsp"%> --%>
+		
+		<!-- 정렬하기 + 총개수  -->
+		<section class="store-range">
+			<ul class="nav nav-pills">
+				<li class="store-nav">
+					<p class="store-nav-p">정렬기준</p>
+				</li>
+				<li class="store-nav dropdown"><select
+					class="form-select store-form-select"
+					aria-label="Default select example">
+						<option selected>사전순</option>
+						<option value="1">인기순</option>
+						<option value="2">추천순</option>
+						<option value="3">가격: 오름차순</option>
+						<option value="4">가격: 내림차순</option>
+				</select></li>
+			</ul>
+			<div class="store-nav">
+				<p class="store-nav-p">
+					총 개수 <span>${totalCnt }</span>개
+				</p>
+			</div>
+		</section>
+		<!-- 게임 썸네일 -->
+		<c:choose>
+			<c:when test="${storegamelist != null and fn:length(storegamelist) > 0 }">
+				<div class="row row-cols-1 row-cols-md-6 g-4 store-row">
+					<c:forEach var="list" items="${storegamelist }">
+						<div class="col">
+							<a class="card h-100 store-card" href="/gamedetail.jsp"> 
+								<img src="/img/games/indi/sims/indi-thumbnail-sims.jpg" class="card-img-top" alt="...">
+								<div class="card-body store-card-body">
+									<h5 class="card-title">${list.gamedto.game_name } </h5>
+									<p class="card-text">${list.gamedto.game_price }</p>
+								</div>
+							</a>
+						</div>
+					</c:forEach>	
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div>
+					<h3>찾으시는 게임 목록이 없습니다.</h3>
+				</div>
+			</c:otherwise>
+		</c:choose>
 	</main>
 	<!-- footer -->
 	<%@ include file="/tags/footer.jsp"%>
