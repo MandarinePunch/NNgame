@@ -8,10 +8,10 @@
 		<!-- 바꿔줄 명칭이 더 있다면 여기에 추가해 주세요. -->
 		<typeAlias type="com.nngame.support.dao.SupportDTO" alias="SupportDTO"/>
 		<typeAlias type="com.nngame.user.dao.UserDTO" alias="UserDTO"/>
-		<typeAlias type="com.nngame.store.dao.StoreDTO" alias="storedto"/>
-		<typeAlias type="com.nngame.game.dto.CategoryDTO" alias="categorydto"/>
-		<typeAlias type="com.nngame.game.dto.GameDTO" alias="gamedto"/>
-		<typeAlias type="com.nngame.game.dto.ImageDTO" alias="imagedto"/>
+		<typeAlias type="com.nngame.store.dao.StoreDTO" alias="StoreDTO"/>
+		<typeAlias type="com.nngame.game.dto.CategoryDTO" alias="CategoryDTO"/>
+		<typeAlias type="com.nngame.game.dto.GameDTO" alias="GameDTO"/>
+		<typeAlias type="com.nngame.game.dto.ImageDTO" alias="ImageDTO"/>
 	</typeAliases>
 
 	<environments default="development">

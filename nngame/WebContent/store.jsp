@@ -107,10 +107,10 @@
 					<c:forEach var="list" items="${storegamelist }">
 						<div class="col">
 							<a class="card h-100 store-card" href="/gamedetail.jsp"> 
-								<img src="/img/games/indi/sims/indi-thumbnail-sims.jpg" class="card-img-top" alt="...">
+								<img src="/img/games/${list.imageDTO.image_main }" class="card-img-top" alt="...">
 								<div class="card-body store-card-body">
-									<h5 class="card-title">${list.gamedto.game_name } </h5>
-									<p class="card-text">${list.gamedto.game_price }</p>
+									<h5 class="card-title">${list.gameDTO.game_name } </h5>
+									<p class="card-text">${list.gameDTO.game_price }</p>
 								</div>
 							</a>
 						</div>
