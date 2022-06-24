@@ -56,8 +56,17 @@
 		<div class="row">
 			<div class="login__line">간편 로그인</div>
 			<div class="col login__simple-login">
-				<img alt="" src="/img/icon/login/google.png"> <img alt=""
-					src="/img/icon/login/kakao.png">
+				<!-- Google Login -->
+				<a href=""><img src="/img/icon/login/google.png"></a>
+								
+				<!-- Kakao Login --> 
+				<a href="javascript:kakaoLogin();"><img src="/img/icon/login/kakao.png"></a>
+				<form action="/user/kakaoLogin.io" id="kakaofrm" onsubmit="return false" method="post">
+					<input type="hidden" name="kakaonick" id="kakao_nick">
+					<input type="hidden" name="kakaoEmail" id="kakao_email">
+					<input type="hidden" name="kakaoage" id="kakao_age">
+					<input type="hidden" name="kakaobirth" id="kakao_birth">
+				</form>
 			</div>
 		</div>
 	</div>
@@ -66,8 +75,8 @@
 	<%@ include file="/tags/footer.jsp"%>
 
 	<!-- 로그인 폼 Script -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script src="/js/login/login.js"></script>
-
 	<!-- Bootstrap 옵션 -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

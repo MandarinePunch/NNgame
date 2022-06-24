@@ -42,6 +42,8 @@ public class UserFrontController extends HttpServlet {
 			forward = new UserModAction().execute(request, response);
 		} else if(requestURI.equals("/user/userModPw.io")) {
 			new UserModPwAction().execute(request, response);
+		} else if(requestURI.equals("/user/kakaoLogin.io")) {
+			new UserKakaoLoginAction().execute(request, response);
 		}
 		
 		if(forward != null) {			

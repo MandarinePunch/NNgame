@@ -25,7 +25,7 @@
 <body>
 	<!-- header-->
 	<%@ include file="/tags/header.jsp"%>
-
+	
 	<!-- mainContents -->
 	<div style="width: 100%;">
 		<div class="container"
@@ -63,20 +63,31 @@
 			<div class="row mypage-boxstyle">
 				<form action="/user/userModPw.io" onsubmit="return checkModPw()" method="post">
 					<label for="mod_pass1" class="form-label">비밀번호</label>
-					<div class="mb-3">
-						<input type="hidden" name="modid" value="${sessionScope.udto.getUser_email() }">
-						<input type="password" class="form-control" id="mod_beforepass" name="modpw" placeholder="현재 비밀번호">
-					</div>
-					<div class="mb-3">
-						<input type="password" class="form-control" id="mod_newpass" name="modnewpw" placeholder="새 비밀번호">
-					</div>
-					<div class="mb-3">
-						<input type="password" class="form-control" id="mod_newpasscheck" placeholder="새 비밀번호 확인">
-					</div>
-					<div style="text-align: center;">
-					<input type="submit" class="btn submit-btn" style="width: 40%; margin : 10px 0;"
-						value="수정하기">
-					</div>
+					<c:choose>
+						<c:when test="${empty sessionScope.udto.getUser_pwd()}">
+							<div class="mb-3">
+								<input type="hidden" name="modid"
+									value="${sessionScope.udto.getUser_email() }"> <input
+									type="password" class="form-control" id="mod_beforepass"
+									name="modpw" placeholder="현재 비밀번호">
+							</div>
+							<div class="mb-3">
+								<input type="password" class="form-control" id="mod_newpass"
+									name="modnewpw" placeholder="새 비밀번호">
+							</div>
+							<div class="mb-3">
+								<input type="password" class="form-control"
+									id="mod_newpasscheck" placeholder="새 비밀번호 확인">
+							</div>
+							<div style="text-align: center;">
+								<input type="submit" class="btn submit-btn"
+									style="width: 40%; margin: 10px 0;" value="수정하기">
+							</div>
+						</c:when>
+						<c:otherwise>
+							<p>연동 로그인기능 사용 시 비밀번호 변경이 불가합니다.</p>
+						</c:otherwise>
+					</c:choose>
 				</form>
 			</div>
 
@@ -96,9 +107,10 @@
 								<p>2. 탈퇴 후 동일한 메일로 재가입이 가능하지만, 탈퇴 한 계정과 연동되지 않습니다.</p>
 								<p>3. 탈퇴 후 연동된 소셜 계정 정보도 사라지며, 소셜 로그인이 불가능합니다.</p>
 								<p>4. 현재 비밀번호를 입력하고 탈퇴하기를 누르시면 위 내용에 동의하는 것으로 간주됩니다.</p>
+								<p>연동로그인 시의 비밀번호는 자동입력됩니다.</p>
 							</div>
 							<input type="hidden" name="user_email" value="${sessionScope.udto.getUser_email() }">
-							<input type="password" name="user_pwd" class="form-control" id="mod_outpass" placeholder="현재 비밀번호 입력">
+							<input type="password" name="user_pwd" class="form-control" id="mod_outpass" placeholder="현재 비밀번호 입력" value="${sessionScope.udto.getUser_pwd() }">
 							<div style="text-align: center;">
 								<input type="submit" class="btn submit-btn"	style="width: 40%; margin: 15px 0;" value="수정하기">
 							</div>

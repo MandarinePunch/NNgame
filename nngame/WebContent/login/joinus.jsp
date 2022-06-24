@@ -65,15 +65,6 @@
 					value="가입하기">
 			</form>
 		</div>
-
-		<!-- 연동 로그인 -->
-		<div class="row">
-			<div class="join__line">간편 회원가입</div>
-			<div class="col join__simple-join">
-				<img src="/img/icon/login/google.png"> 
-				<img src="/img/icon/login/kakao.png">
-			</div>
-		</div>
 	</div>
 
 	<!-- footer -->

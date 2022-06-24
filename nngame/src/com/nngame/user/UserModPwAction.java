@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.nngame.action.Action;
 import com.nngame.action.ActionForward;
 import com.nngame.user.dao.UserDAO;
+import com.nngame.user.dao.UserDTO;
 
 public class UserModPwAction implements Action{
 
