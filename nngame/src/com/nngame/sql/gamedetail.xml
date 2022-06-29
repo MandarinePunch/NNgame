@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="GameDetail">
+ 
+ 	<!-- 게임테이블 -->
+	<resultMap type="GameDTO" id="gameMap">
+		<id column="GAME_NUM" property="game_num"/>
+		<result column="GAME_NAME" property="game_name"/>
+		<result column="GAME_PRICE" property="game_price"/>
+		<result column="GAME_DEVELOPER" property="game_developer"/>
+		<result column="GAME_RELEASE" property="game_release"/>
+		<result column="GAME_DETAIL" property="game_detail"/>
+		<result column="GAME_REQUIRE" property="game_require"/>
+		<result column="GAME_AGELIMIT" property="game_agelimit"/>
+		<result column="CATE_NUM" property="cate_num"/>
+		<result column="GAME_DISCOUNT" property="game_discount"/>
+	</resultMap>
+	
+	<!-- 카테고리테이블 -->
+	<resultMap type="CategoryDTO" id="cateMap">
+		<id column="CATE_NUM" property="cate_num"/>
+		<result column="CATE_GENRE" property="cate_genre"/>
+	</resultMap>
+	
+	<!-- 이미지테이블 -->
+	<resultMap type="ImageDTO" id="imgMap">
+		<id column="IMAGE_NUM" property="image_num"/>
+		<result column="GAME_NUM" property="game_num"/>
+		<result column="IMAGE_MAIN" property="image_main"/>
+		<result column="IMAGE_BANNER" property="image_banner"/>
+		<result column="IMAGE_SCREEN1" property="image_screen1"/>
+		<result column="IMAGE_SCREEN2" property="image_screen2"/>
+		<result column="IMAGE_SCREEN3" property="image_screen3"/>
+		<result column="IMAGE_SCREEN4" property="image_screen4"/>
+	</resultMap>
+	
+	<!-- 유저 테이블 -->
+	<resultMap type="UserDTO" id="userMap">
+		<result column="USER_NICKNAME" property="user_nickname"/>
+	</resultMap>
+	
+	<!-- 게임 상세 DTO -->
+	<resultMap type="GameDetailDTO" id="gameDetailMap">
+		<collection property="gameDTO" resultMap="gameMap" />
+		<collection property="imageDTO" resultMap="imgMap" />
+		<collection property="cateDTO" resultMap="cateMap" />
+	</resultMap>
+	
+	<!-- 리뷰 DTO -->
+	<resultMap type="ReviewDTO" id="reviewMap">
+		<result column="REVIEW_NUM" property="review_num"/>
+		<result column="REVIEW_RATE" property="review_rate"/>
+		<result column="REVIEW_CONTENT" property="review_content"/>
+		<result column="REVIEW_DATE" property="review_date"/>
+		<result column="GAME_NUM" property="game_num"/>
+		<result column="USER_NUM" property="user_num"/>
+		<collection property="userDTO" resultMap="userMap" />
+	</resultMap>
+
+	<!-- 게임 상세 출력 -->
+	<select id="getGameDetail" parameterType="_int" resultMap="gameDetailMap">
+		SELECT 	*
+		FROM 	GAME g
+			LEFT OUTER JOIN GAME_IMAGE gi ON g.GAME_NUM = gi.GAME_NUM
+			LEFT OUTER JOIN CATEGORY c ON g.CATE_NUM = c.CATE_NUM  
+		WHERE 	g.GAME_NUM = #{game_num}
+	</select>
+	
+	<!-- review에 insert -->
+	<insert id="insertReview" parameterType="hashmap">
+		INSERT INTO REVIEW  
+		VALUES (SEQ_review_NO.nextval, #{review_rate}, #{review_content}, sysdate, #{game_num}, #{user_num})
+	</insert>
+	
+	<!-- 게임별 전체 리뷰 목록 가져오기 -->
+	<select id="getReviewList" parameterType="_int" resultMap="reviewMap">
+		SELECT 	r.REVIEW_NUM , r.REVIEW_RATE , r.REVIEW_CONTENT 
+		,	r.REVIEW_DATE , r.GAME_NUM , r.USER_NUM 
+		,	u.USER_NICKNAME 
+		FROM REVIEW r 
+			LEFT OUTER JOIN USERINFO u ON r.USER_NUM = u.USER_NUM 
+		WHERE GAME_NUM = #{game_num}
+		ORDER BY r.REVIEW_NUM DESC
+	</select>
+	
+	<!-- 리뷰 삭제 -->
+	<delete id="deleteReview" parameterType="_int">
+		DELETE FROM REVIEW r WHERE REVIEW_NUM = #{review_num}
+	</delete>
+	
+</mapper>
